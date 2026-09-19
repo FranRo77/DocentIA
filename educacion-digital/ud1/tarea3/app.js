@@ -193,6 +193,16 @@ const ORDER_INITIAL_SEQUENCE = [3, 5, 1, 4, 2];
 const FINAL_QUESTION =
   "¿Por qué que un componente encaje físicamente no significa necesariamente que sea adecuado para ese ordenador?";
 
+// Lista cerrada de IDs autorizados (pseudónimos de clase, incluido el del profesor).
+// No son nombres reales; añade o quita códigos aquí para otro grupo.
+const ALLOWED_IDS = [
+  "FRPENA",
+  "NAG13", "DBG8", "CBP9", "MCR8", "ACM13", "DCA10", "MC015", "GCA34",
+  "ACV10", "JCL11", "CFG12", "LFP13", "AFC15", "MGT7", "GGF12", "DLG9",
+  "NLP6", "JPG14", "SPP11", "SRO22", "NRG51", "ARP9", "ASU16", "PSB53",
+  "FVC55", "OVA5", "AVL13", "SVS16",
+].map((id) => id.toUpperCase());
+
 /* ------------------------------------------------------------------ */
 /* Estado en memoria                                                   */
 /* ------------------------------------------------------------------ */
@@ -289,6 +299,9 @@ function validateStudentId(value) {
   }
   if (!/^[A-Za-z0-9]+$/.test(trimmed)) {
     return "El ID solo puede contener letras y números, sin espacios.";
+  }
+  if (!ALLOWED_IDS.includes(trimmed.toUpperCase())) {
+    return "Ese ID no está en la lista de la clase. Revisa cómo lo has escrito.";
   }
   return "";
 }

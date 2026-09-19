@@ -52,6 +52,15 @@ Para añadir o quitar preguntas de un reto con lista (2, 3 y 4), añade o
 elimina elementos del array correspondiente: el renderizado y el cálculo
 de la puntuación sobre el máximo se adaptan automáticamente.
 
+## Lista de IDs autorizados
+
+El campo "ID del alumno o alumna" de la pantalla de inicio solo acepta
+los códigos que aparecen en `ALLOWED_IDS` (en `app.js`, justo debajo de
+`FINAL_QUESTION`). Para otro grupo, sustituye esa lista por los códigos
+correspondientes; la comparación no distingue mayúsculas/minúsculas. Si
+prefieres no restringir el ID a una lista cerrada, elimina la comprobación
+`ALLOWED_IDS.includes(...)` dentro de `validateStudentId()`.
+
 ## Cómo sustituir imágenes
 
 Actualmente **no se usa ninguna imagen externa**: el esquema de la placa
