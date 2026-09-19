@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarea 3 · Monta el equipo · Educación Digital 3.º ESO</title>
+<meta name="description" content="Actividad interactiva de la UD1 de Educación Digital: identificación de componentes, conexiones básicas y manipulación segura de un ordenador.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='6' width='12' height='12' rx='1' fill='none' stroke='%231d4d72' stroke-width='2'/%3E%3Crect x='10' y='10' width='4' height='4' fill='%231d4d72'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header no-print">
+  <p class="eyebrow">Educación Digital · 3.º ESO · UD1</p>
+  <h1>Tarea 3 · Monta el equipo</h1>
+</header>
+
+<nav class="progress-nav no-print" aria-label="Progreso de la actividad" hidden id="progress-nav">
+  <ol id="progress-list"></ol>
+</nav>
+
+<main id="app">
+
+  <!-- ==================== PANTALLA 0: INICIO ==================== -->
+  <section id="screen-inicio" class="screen" aria-labelledby="inicio-h2">
+    <h2 id="inicio-h2">Antes de empezar</h2>
+
+    <p>
+      Vas a resolver cinco retos breves sobre los componentes de un ordenador,
+      sus conexiones y su manipulación segura. Al final obtendrás una tarjeta
+      de resultado con tu <strong>primer intento</strong> en cada reto.
+    </p>
+    <p>
+      Duración aproximada: <strong>20–25 minutos</strong>. Puedes usar el ratón
+      o el teclado en todos los ejercicios.
+    </p>
+
+    <div class="privacy-note">
+      <p>
+        Esta actividad no guarda datos en el navegador ni los envía a ningún
+        servidor. Todo se pierde al recargar la página: es intencionado.
+        No escribas tu nombre real.
+      </p>
+    </div>
+
+    <form id="form-inicio" novalidate>
+      <div class="field">
+        <label for="input-id">ID del alumno o alumna</label>
+        <p class="field-hint" id="id-hint">
+          Un identificador inventado, no tu nombre. Entre 3 y 12 caracteres,
+          solo letras y números. Ejemplo: <code>ACM13</code>
+        </p>
+        <input
+          type="text"
+          id="input-id"
+          name="studentId"
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="12"
+          aria-describedby="id-hint id-error"
+          required
+        >
+        <p class="field-error" id="id-error" role="alert" aria-live="assertive"></p>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Comenzar</button>
+    </form>
+  </section>
+
+  <!-- ==================== RETO 1: COLOCA LOS COMPONENTES ==================== -->
+  <section id="screen-reto1" class="screen" aria-labelledby="reto1-h2" hidden>
+    <h2 id="reto1-h2">Reto 1 · Coloca los componentes</h2>
+    <p class="instructions">
+      Asocia cada componente con la zona de la placa base donde se conecta.
+      Puedes <strong>arrastrar</strong> cada componente hasta su zona, o bien
+      <strong>seleccionar un componente y después la zona</strong> haciendo clic
+      o pulsando Intro. Coloca los cinco antes de pulsar «Comprobar».
+    </p>
+
+    <div class="reto1-layout">
+      <div class="components-tray" role="group" aria-label="Componentes disponibles" id="reto1-tray">
+        <!-- componentes generados por JS -->
+      </div>
+
+      <div class="board-wrap">
+        <svg class="board" viewBox="0 0 420 300" role="img" aria-label="Esquema simplificado de una placa base con cinco zonas de conexión numeradas">
+          <rect x="4" y="4" width="412" height="292" rx="10" class="board-bg"></rect>
+          <!-- zona 1: socket CPU (cuadrado central) -->
+          <!-- zona 2: ranuras RAM (rectángulos verticales, derecha) -->
+          <!-- zona 3: ranura PCIe (rectángulo largo horizontal, abajo) -->
+          <!-- zona 4: ranura M.2 (rectángulo corto) -->
+          <!-- zona 5: conectores SATA (pequeños conectores en L) -->
+          <text x="16" y="24" class="board-label">Placa base (esquema simplificado)</text>
+        </svg>
+
+        <div class="drop-zone dz-1" data-zone="1" style="left:8%; top:16%; width:26%; height:34%;"></div>
+        <div class="drop-zone dz-2" data-zone="2" style="left:40%; top:12%; width:20%; height:40%;"></div>
+        <div class="drop-zone dz-3" data-zone="3" style="left:8%; top:66%; width:52%; height:14%;"></div>
+        <div class="drop-zone dz-4" data-zone="4" style="left:66%; top:66%; width:26%; height:10%;"></div>
+        <div class="drop-zone dz-5" data-zone="5" style="left:66%; top:20%; width:26%; height:30%;"></div>
+        <!-- Las zonas y componentes reales se generan/gestionan por JS -->
+      </div>
+    </div>
+
+    <p class="feedback" id="reto1-feedback" role="status" aria-live="polite"></p>
+
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" id="reto1-reset">Vaciar zonas</button>
+      <button type="button" class="btn btn-primary" id="reto1-check">Comprobar</button>
+      <button type="button" class="btn btn-primary" id="reto1-next" hidden>Continuar</button>
+    </div>
+  </section>
+
+  <!-- ==================== RETO 2: ELIGE LA CONEXIÓN ==================== -->
+  <section id="screen-reto2" class="screen" aria-labelledby="reto2-h2" hidden>
+    <h2 id="reto2-h2">Reto 2 · Elige la conexión</h2>
+    <p class="instructions">
+      Para cada situación, selecciona el tipo de conexión adecuado.
+    </p>
+
+    <ol class="scenario-list" id="reto2-list">
+      <!-- generado por JS -->
+    </ol>
+
+    <p class="feedback" id="reto2-feedback" role="status" aria-live="polite"></p>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="reto2-check">Comprobar</button>
+      <button type="button" class="btn btn-primary" id="reto2-next" hidden>Continuar</button>
+    </div>
+  </section>
+
+  <!-- ==================== RETO 3: ¿CORRECTO O HAY UN PROBLEMA? ==================== -->
+  <section id="screen-reto3" class="screen" aria-labelledby="reto3-h2" hidden>
+    <h2 id="reto3-h2">Reto 3 · ¿Correcto o hay un problema?</h2>
+    <p class="instructions">
+      Lee cada situación y decide si la actuación descrita es correcta o si
+      hay un problema.
+    </p>
+
+    <ol class="situation-list" id="reto3-list">
+      <!-- generado por JS -->
+    </ol>
+
+    <p class="feedback" id="reto3-feedback" role="status" aria-live="polite"></p>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="reto3-check">Comprobar</button>
+      <button type="button" class="btn btn-primary" id="reto3-next" hidden>Continuar</button>
+    </div>
+  </section>
+
+  <!-- ==================== RETO 4: ORDEN DE MONTAJE SEGURO ==================== -->
+  <section id="screen-reto4" class="screen" aria-labelledby="reto4-h2" hidden>
+    <h2 id="reto4-h2">Reto 4 · Orden de montaje seguro</h2>
+    <p class="instructions">
+      Ordena estos cinco pasos tal y como deberían seguirse para instalar un
+      componente de forma segura. Usa los botones «Subir» y «Bajar», o
+      arrastra cada paso a su posición.
+    </p>
+
+    <ol class="order-list" id="reto4-list">
+      <!-- generado por JS -->
+    </ol>
+
+    <p class="feedback" id="reto4-feedback" role="status" aria-live="polite"></p>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="reto4-check">Comprobar</button>
+      <button type="button" class="btn btn-primary" id="reto4-next" hidden>Continuar</button>
+    </div>
+  </section>
+
+  <!-- ==================== RETO FINAL: RAZONA ==================== -->
+  <section id="screen-final-reto" class="screen" aria-labelledby="final-reto-h2" hidden>
+    <h2 id="final-reto-h2">Reto final · Razona</h2>
+    <p class="instructions" id="final-reto-question">
+      ¿Por qué que un componente encaje físicamente no significa
+      necesariamente que sea adecuado para ese ordenador?
+    </p>
+
+    <div class="field">
+      <label for="input-razona">Tu respuesta</label>
+      <textarea id="input-razona" maxlength="250" rows="4" aria-describedby="razona-count"></textarea>
+      <p class="field-hint" id="razona-count">0 / 250 caracteres</p>
+    </div>
+
+    <p class="feedback" id="final-reto-feedback" role="status" aria-live="polite"></p>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="final-reto-save">Guardar respuesta y ver resultado</button>
+    </div>
+  </section>
+
+  <!-- ==================== RESULTADO ==================== -->
+  <section id="screen-resultado" class="screen" aria-labelledby="resultado-h2" hidden>
+    <div class="result-card" id="result-card">
+      <p class="eyebrow">Tarea 3 · Monta el equipo</p>
+      <p class="result-id" id="result-id"></p>
+
+      <h2 id="resultado-h2">Primer intento</h2>
+      <dl class="result-grid" id="result-grid">
+        <!-- generado por JS -->
+      </dl>
+
+      <p class="result-total" id="result-total"></p>
+
+      <p class="result-corrected" id="result-corrected" hidden>Actividad corregida: completada</p>
+
+      <div class="result-final-answer">
+        <h3>Respuesta final</h3>
+        <p id="result-final-answer-text"></p>
+      </div>
+
+      <p class="result-note no-print">
+        Haz una captura de pantalla de esta tarjeta y entrégala en Microsoft
+        Teams.
+      </p>
+    </div>
+
+    <div class="actions" id="resultado-actions">
+      <button type="button" class="btn btn-secondary" id="btn-capture">Preparar captura</button>
+      <button type="button" class="btn btn-secondary" id="btn-restart">Reiniciar actividad</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer no-print">
+  <button type="button" class="link-button" id="btn-credits">Créditos y licencias</button>
+</footer>
+
+<div class="modal-backdrop no-print" id="credits-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="credits-h2">
+    <h2 id="credits-h2">Créditos y licencias</h2>
+    <p>
+      Todos los diagramas de esta actividad son gráficos vectoriales (SVG)
+      creados específicamente para esta tarea. No se ha utilizado ninguna
+      imagen externa con licencia Creative Commons ni de ningún otro tipo.
+    </p>
+    <p>
+      Detalle completo en
+      <a href="assets/ATTRIBUTIONS.md" target="_blank" rel="noopener">assets/ATTRIBUTIONS.md</a>.
+    </p>
+    <button type="button" class="btn btn-secondary" id="credits-close">Cerrar</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
