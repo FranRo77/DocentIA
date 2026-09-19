@@ -17,6 +17,23 @@ No es una ficha teórica ni repite el contenido de las Tareas 1 y 2
 (hardware/software/firmware, placa base, CPU, RAM, almacenamiento en T1;
 GPU, fuente de alimentación, refrigeración, puertos, UEFI/BIOS en T2).
 
+## Intentos y entrega
+
+Cada reto admite como máximo **dos intentos** (`MAX_ATTEMPTS` en
+`app.js`): al primer «Comprobar» se marca qué está bien o mal (sin
+revelar la respuesta correcta) y, si no es todo correcto, el alumnado
+dispone de un único intento más para corregir. Al segundo intento —o en
+cuanto acierta todo— el reto queda bloqueado (controles deshabilitados)
+y solo puede continuar. El resultado final siempre muestra la
+puntuación del **primer intento**, nunca la corregida.
+
+La pantalla final incluye un bloque de texto de solo lectura con el
+resultado ya formateado y un botón «Copiar resultado» (API de
+portapapeles del navegador, con reserva mediante selección de texto y
+`execCommand('copy')` si el navegador no admite la API). El alumnado
+debe copiar y pegar ese texto en la tarea de Microsoft Teams; «Preparar
+captura» se mantiene como alternativa visual opcional.
+
 ## Estructura de archivos
 
 ```

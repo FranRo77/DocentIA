@@ -11,8 +11,28 @@
 <body>
 
 <header class="app-header no-print">
-  <p class="eyebrow">Educación Digital · 3.º ESO · UD1</p>
-  <h1>Tarea 3 · Monta el equipo</h1>
+  <div class="app-header-inner">
+    <svg class="app-crest" viewBox="0 0 48 48" role="img" aria-label="Emblema de Educación Digital">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="url(#crest-gold)" stroke-width="1.4"/>
+      <circle cx="24" cy="24" r="17" fill="none" stroke="url(#crest-gold)" stroke-width="0.8" opacity="0.6"/>
+      <rect x="16" y="16" width="16" height="16" rx="2" fill="none" stroke="url(#crest-gold)" stroke-width="1.6"/>
+      <rect x="20.5" y="20.5" width="7" height="7" fill="url(#crest-gold)"/>
+      <g stroke="url(#crest-gold)" stroke-width="1.4">
+        <line x1="24" y1="7" x2="24" y2="16"/><line x1="24" y1="32" x2="24" y2="41"/>
+        <line x1="7" y1="24" x2="16" y2="24"/><line x1="32" y1="24" x2="41" y2="24"/>
+      </g>
+      <defs>
+        <linearGradient id="crest-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#e7c874"/>
+          <stop offset="1" stop-color="#a97c1f"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div>
+      <p class="eyebrow">Educación Digital · 3.º ESO · UD1</p>
+      <h1>Tarea 3 · Monta el equipo</h1>
+    </div>
+  </div>
 </header>
 
 <nav class="progress-nav no-print" aria-label="Progreso de la actividad" hidden id="progress-nav">
@@ -33,6 +53,11 @@
     <p>
       Duración aproximada: <strong>20–25 minutos</strong>. Puedes usar el ratón
       o el teclado en todos los ejercicios.
+    </p>
+    <p>
+      En cada reto dispones de <strong>dos intentos</strong>: al comprobar,
+      verás qué respuestas fallan y podrás corregirlas una única vez. Tu
+      primer intento es siempre el que cuenta en el resultado final.
     </p>
 
     <div class="privacy-note">
@@ -82,7 +107,7 @@
         <!-- componentes generados por JS -->
       </div>
 
-      <div class="board-wrap">
+      <div class="board-wrap" id="reto1-board-wrap">
         <svg class="board" viewBox="0 0 420 300" role="img" aria-label="Esquema simplificado de una placa base con cinco zonas de conexión numeradas">
           <defs>
             <linearGradient id="pcb-grad" x1="0" y1="0" x2="1" y2="1">
@@ -387,10 +412,19 @@
         <p id="result-final-answer-text"></p>
       </div>
 
-      <p class="result-note no-print">
-        Haz una captura de pantalla de esta tarjeta y entrégala en Microsoft
-        Teams.
+    </div>
+
+    <div class="copy-block no-print">
+      <h3>Texto para entregar en Microsoft Teams</h3>
+      <p class="instructions">
+        Copia este resultado y pégalo en la tarea de Teams. También puedes
+        seleccionar el texto a mano y copiarlo con Ctrl+C.
       </p>
+      <textarea id="result-plain-text" class="result-plain-text" readonly rows="10" aria-label="Resultado en texto plano para copiar"></textarea>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="btn-copy-result">Copiar resultado</button>
+        <span class="copy-confirm" id="copy-confirm" role="status" aria-live="polite"></span>
+      </div>
     </div>
 
     <div class="actions" id="resultado-actions">

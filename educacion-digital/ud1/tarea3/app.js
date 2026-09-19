@@ -207,13 +207,22 @@ const ALLOWED_IDS = [
 /* Estado en memoria                                                   */
 /* ------------------------------------------------------------------ */
 
+const MAX_ATTEMPTS = 2;
+
+function createRetoState(extra) {
+  return Object.assign(
+    { firstChecked: false, firstScore: null, corrected: false, attempts: 0, locked: false },
+    extra
+  );
+}
+
 const state = {
   studentId: "",
   screen: "inicio",
-  reto1: { assignments: {}, selectedComponent: null, firstChecked: false, firstScore: null, corrected: false, allFilledOnce: false },
-  reto2: { answers: {}, firstChecked: false, firstScore: null, corrected: false },
-  reto3: { answers: {}, firstChecked: false, firstScore: null, corrected: false },
-  reto4: { order: ORDER_INITIAL_SEQUENCE.slice(), firstChecked: false, firstScore: null, corrected: false },
+  reto1: createRetoState({ assignments: {}, selectedComponent: null }),
+  reto2: createRetoState({ answers: {} }),
+  reto3: createRetoState({ answers: {} }),
+  reto4: createRetoState({ order: ORDER_INITIAL_SEQUENCE.slice() }),
   final: { answered: false, text: "" },
 };
 
@@ -388,6 +397,7 @@ function initReto1() {
 
 function onChipClick(componentId) {
   const r1 = state.reto1;
+  if (r1.locked) return;
   if (r1.assignments[componentId] !== undefined) return; // ya colocado; usar la zona para liberarlo
   r1.selectedComponent = r1.selectedComponent === componentId ? null : componentId;
   renderReto1();
@@ -395,6 +405,7 @@ function onChipClick(componentId) {
 
 function onZoneActivate(zoneId) {
   const r1 = state.reto1;
+  if (r1.locked) return;
   const occupantEntry = Object.entries(r1.assignments).find(([, z]) => z === zoneId);
 
   if (r1.selectedComponent) {
@@ -414,6 +425,7 @@ function onZoneActivate(zoneId) {
 
 function placeComponent(componentId, zoneId) {
   const r1 = state.reto1;
+  if (r1.locked) return;
   const previousZoneOccupant = Object.entries(r1.assignments).find(([, z]) => z === zoneId);
   if (previousZoneOccupant) delete r1.assignments[previousZoneOccupant[0]];
   r1.assignments[componentId] = zoneId;
@@ -465,6 +477,7 @@ function renderReto1() {
 
 function checkReto1() {
   const r1 = state.reto1;
+  if (r1.locked) return;
   const feedback = document.getElementById("reto1-feedback");
 
   if (Object.keys(r1.assignments).length < COMPONENTS.length) {
@@ -488,11 +501,22 @@ function checkReto1() {
     }
   });
 
-  registerAttempt(r1, score, COMPONENTS.length);
-  feedback.textContent =
-    "Aciertos: " + score + " de " + COMPONENTS.length + "." +
-    (score < COMPONENTS.length ? " Las zonas marcadas en rojo no son correctas: puedes corregirlas." : " Todo correcto.");
+  const locked = registerAttempt(r1, score, COMPONENTS.length);
+  feedback.textContent = "Aciertos: " + score + " de " + COMPONENTS.length + "." + attemptStatusText(r1, score, COMPONENTS.length);
   document.getElementById("reto1-next").hidden = false;
+  if (locked) lockReto1();
+}
+
+function lockReto1() {
+  document.getElementById("reto1-tray").classList.add("is-locked");
+  document.getElementById("reto1-board-wrap").classList.add("is-locked");
+  document.querySelectorAll("#reto1-tray .component-chip").forEach((chip) => {
+    chip.disabled = true;
+    chip.setAttribute("draggable", "false");
+  });
+  document.querySelectorAll(".drop-zone").forEach((zone) => zone.setAttribute("tabindex", "-1"));
+  document.getElementById("reto1-check").disabled = true;
+  document.getElementById("reto1-reset").disabled = true;
 }
 
 /* ------------------------------------------------------------------ */
@@ -541,15 +565,17 @@ function renderReto2Selection(scenarioId) {
 }
 
 function checkReto2() {
+  const r2 = state.reto2;
+  if (r2.locked) return;
   const feedback = document.getElementById("reto2-feedback");
-  if (Object.keys(state.reto2.answers).length < SCENARIOS.length) {
+  if (Object.keys(r2.answers).length < SCENARIOS.length) {
     feedback.textContent = "Responde las cinco situaciones antes de comprobar.";
     return;
   }
 
   let score = 0;
   SCENARIOS.forEach((scenario) => {
-    const chosen = state.reto2.answers[scenario.id];
+    const chosen = r2.answers[scenario.id];
     const isCorrect = chosen === scenario.correct;
     if (isCorrect) score += 1;
     document.querySelectorAll('.option-btn[data-scenario="' + scenario.id + '"]').forEach((btn) => {
@@ -560,10 +586,15 @@ function checkReto2() {
     });
   });
 
-  registerAttempt(state.reto2, score, SCENARIOS.length);
-  feedback.textContent = "Aciertos: " + score + " de " + SCENARIOS.length + "." +
-    (score < SCENARIOS.length ? " Puedes corregir las respuestas marcadas en rojo." : " Todo correcto.");
+  const locked = registerAttempt(r2, score, SCENARIOS.length);
+  feedback.textContent = "Aciertos: " + score + " de " + SCENARIOS.length + "." + attemptStatusText(r2, score, SCENARIOS.length);
   document.getElementById("reto2-next").hidden = false;
+  if (locked) lockReto2();
+}
+
+function lockReto2() {
+  document.querySelectorAll("#reto2-list .option-btn").forEach((btn) => { btn.disabled = true; });
+  document.getElementById("reto2-check").disabled = true;
 }
 
 /* ------------------------------------------------------------------ */
@@ -616,15 +647,17 @@ function renderReto3Selection(situationId) {
 }
 
 function checkReto3() {
+  const r3 = state.reto3;
+  if (r3.locked) return;
   const feedback = document.getElementById("reto3-feedback");
-  if (Object.keys(state.reto3.answers).length < SITUATIONS.length) {
+  if (Object.keys(r3.answers).length < SITUATIONS.length) {
     feedback.textContent = "Responde las cuatro situaciones antes de comprobar.";
     return;
   }
 
   let score = 0;
   SITUATIONS.forEach((situation) => {
-    const chosen = state.reto3.answers[situation.id];
+    const chosen = r3.answers[situation.id];
     const isCorrect = chosen === situation.correct;
     if (isCorrect) score += 1;
     document.querySelectorAll('.option-btn[data-situation="' + situation.id + '"]').forEach((btn) => {
@@ -636,9 +669,15 @@ function checkReto3() {
     document.getElementById("explain-" + situation.id).setAttribute("data-visible", "true");
   });
 
-  registerAttempt(state.reto3, score, SITUATIONS.length);
-  feedback.textContent = "Aciertos: " + score + " de " + SITUATIONS.length + ". Lee la explicación de cada situación.";
+  const locked = registerAttempt(r3, score, SITUATIONS.length);
+  feedback.textContent = "Aciertos: " + score + " de " + SITUATIONS.length + ". Lee la explicación de cada situación." + attemptStatusText(r3, score, SITUATIONS.length);
   document.getElementById("reto3-next").hidden = false;
+  if (locked) lockReto3();
+}
+
+function lockReto3() {
+  document.querySelectorAll("#reto3-list .option-btn").forEach((btn) => { btn.disabled = true; });
+  document.getElementById("reto3-check").disabled = true;
 }
 
 /* ------------------------------------------------------------------ */
@@ -687,6 +726,7 @@ function renderReto4() {
 }
 
 function moveStep(index, delta) {
+  if (state.reto4.locked) return;
   const order = state.reto4.order;
   const target = index + delta;
   if (target < 0 || target >= order.length) return;
@@ -697,6 +737,7 @@ function moveStep(index, delta) {
 }
 
 function reorderStep(fromIndex, toIndex) {
+  if (state.reto4.locked) return;
   if (fromIndex === toIndex || Number.isNaN(fromIndex)) return;
   const order = state.reto4.order;
   const [moved] = order.splice(fromIndex, 1);
@@ -705,8 +746,10 @@ function reorderStep(fromIndex, toIndex) {
 }
 
 function checkReto4() {
+  const r4 = state.reto4;
+  if (r4.locked) return;
   const feedback = document.getElementById("reto4-feedback");
-  const order = state.reto4.order;
+  const order = r4.order;
   let score = 0;
 
   document.querySelectorAll("#reto4-list .order-item").forEach((item, index) => {
@@ -716,9 +759,18 @@ function checkReto4() {
     item.setAttribute("data-result", order[index] === ORDER_STEPS[index].id ? "correct" : "incorrect");
   });
 
-  registerAttempt(state.reto4, score, ORDER_STEPS.length);
-  feedback.textContent = "Pasos en la posición correcta: " + score + " de " + ORDER_STEPS.length + ". Puedes reordenar y volver a comprobar.";
+  const locked = registerAttempt(r4, score, ORDER_STEPS.length);
+  feedback.textContent = "Pasos en la posición correcta: " + score + " de " + ORDER_STEPS.length + "." + attemptStatusText(r4, score, ORDER_STEPS.length);
   document.getElementById("reto4-next").hidden = false;
+  if (locked) lockReto4();
+}
+
+function lockReto4() {
+  document.querySelectorAll("#reto4-list .order-item").forEach((item) => {
+    item.setAttribute("draggable", "false");
+  });
+  document.querySelectorAll("#reto4-list .order-controls button").forEach((btn) => { btn.disabled = true; });
+  document.getElementById("reto4-check").disabled = true;
 }
 
 /* ------------------------------------------------------------------ */
@@ -751,6 +803,7 @@ function initFinalReto() {
 /* ------------------------------------------------------------------ */
 
 function registerAttempt(retoState, score, max) {
+  retoState.attempts += 1;
   if (!retoState.firstChecked) {
     retoState.firstChecked = true;
     retoState.firstScore = score;
@@ -758,6 +811,16 @@ function registerAttempt(retoState, score, max) {
     retoState.corrected = true;
   }
   retoState.lastMax = max;
+  if (score === max || retoState.attempts >= MAX_ATTEMPTS) {
+    retoState.locked = true;
+  }
+  return retoState.locked;
+}
+
+function attemptStatusText(retoState, score, max) {
+  if (score === max) return " Todo correcto.";
+  if (retoState.locked) return " Se han agotado los intentos disponibles para este reto.";
+  return " Te queda un intento más para corregir lo marcado en rojo.";
 }
 
 /* ------------------------------------------------------------------ */
@@ -791,6 +854,26 @@ function renderResultado() {
   document.getElementById("result-corrected").hidden = !anyCorrected;
 
   document.getElementById("result-final-answer-text").textContent = state.final.text;
+
+  document.getElementById("result-plain-text").value = buildResultPlainText(rows, total, maxTotal, anyCorrected);
+}
+
+function buildResultPlainText(rows, total, maxTotal, anyCorrected) {
+  const lines = [
+    "TAREA 3 · MONTA EL EQUIPO",
+    "ID: " + state.studentId,
+    "",
+    "PRIMER INTENTO",
+  ];
+  rows.forEach(([label, score, max]) => {
+    lines.push(label + ": " + (score == null ? "—" : score) + "/" + max);
+  });
+  lines.push("TOTAL PRIMER INTENTO: " + total + "/" + maxTotal);
+  if (anyCorrected) lines.push("Actividad corregida: completada");
+  lines.push("");
+  lines.push("Respuesta final:");
+  lines.push(state.final.text);
+  return lines.join("\n");
 }
 
 /* ------------------------------------------------------------------ */
@@ -806,6 +889,33 @@ function initResultadoActions() {
 
   document.getElementById("btn-restart").addEventListener("click", () => {
     window.location.reload();
+  });
+
+  const copyBtn = document.getElementById("btn-copy-result");
+  const textarea = document.getElementById("result-plain-text");
+  const confirm = document.getElementById("copy-confirm");
+  copyBtn.addEventListener("click", async () => {
+    let copied = false;
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        copied = true;
+      } catch (err) {
+        copied = false;
+      }
+    }
+    if (!copied) {
+      textarea.focus();
+      textarea.select();
+      try {
+        copied = document.execCommand("copy");
+      } catch (err) {
+        copied = false;
+      }
+    }
+    confirm.textContent = copied
+      ? "Copiado. Ya puedes pegarlo en Teams."
+      : "No se pudo copiar automáticamente: selecciona el texto y copia con Ctrl+C.";
   });
 }
 
