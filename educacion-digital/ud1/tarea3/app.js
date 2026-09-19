@@ -146,11 +146,11 @@ const CONNECTION_OPTIONS = [
 ];
 
 const SCENARIOS = [
-  { id: "s1", text: "El monitor debe mostrar la imagen del ordenador.", correct: "hdmi" },
-  { id: "s2", text: "El teclado y el ratón deben conectarse para poder usarlos.", correct: "usb" },
-  { id: "s3", text: "El ordenador debe conectarse a la red mediante cable.", correct: "ethernet" },
-  { id: "s4", text: "La tarjeta gráfica debe conectarse a la placa base.", correct: "pcie" },
-  { id: "s5", text: "El SSD M.2 debe conectarse a la placa base.", correct: "m2" },
+  { id: "s1", text: "Quieres conectar el monitor para ver la imagen del ordenador. ¿Qué conexión usas?", correct: "hdmi" },
+  { id: "s2", text: "Quieres conectar el teclado y el ratón al ordenador. ¿Qué conexión usas?", correct: "usb" },
+  { id: "s3", text: "Quieres conectar el ordenador a la red mediante un cable. ¿Qué conexión usas?", correct: "ethernet" },
+  { id: "s4", text: "Quieres conectar la tarjeta gráfica a la placa base. ¿Qué conexión usas?", correct: "pcie" },
+  { id: "s5", text: "Quieres conectar un SSD M.2 a la placa base. ¿Qué conexión usas?", correct: "m2" },
 ];
 
 const SITUATIONS = [
