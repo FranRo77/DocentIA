@@ -84,13 +84,99 @@
 
       <div class="board-wrap">
         <svg class="board" viewBox="0 0 420 300" role="img" aria-label="Esquema simplificado de una placa base con cinco zonas de conexión numeradas">
-          <rect x="4" y="4" width="412" height="292" rx="10" class="board-bg"></rect>
-          <!-- zona 1: socket CPU (cuadrado central) -->
-          <!-- zona 2: ranuras RAM (rectángulos verticales, derecha) -->
-          <!-- zona 3: ranura PCIe (rectángulo largo horizontal, abajo) -->
-          <!-- zona 4: ranura M.2 (rectángulo corto) -->
-          <!-- zona 5: conectores SATA (pequeños conectores en L) -->
-          <text x="16" y="24" class="board-label">Placa base (esquema simplificado)</text>
+          <defs>
+            <linearGradient id="pcb-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#155c46"/>
+              <stop offset="0.55" stop-color="#0e4636"/>
+              <stop offset="1" stop-color="#0a3327"/>
+            </linearGradient>
+            <linearGradient id="socket-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7c8896"/>
+              <stop offset="1" stop-color="#4d5763"/>
+            </linearGradient>
+            <linearGradient id="gold-edge" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#f2d385"/>
+              <stop offset="1" stop-color="#c99a3f"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="4" y="4" width="412" height="292" rx="12" class="board-bg" fill="url(#pcb-grad)"></rect>
+
+          <!-- trazas decorativas de circuito -->
+          <g class="board-traces" stroke="#1f7a5c" stroke-width="1.2" fill="none" opacity="0.55">
+            <path d="M20 200 h60 v-40 h30"/>
+            <path d="M20 230 h40 v20 h50"/>
+            <path d="M395 40 h-40 v30 h-20"/>
+            <path d="M395 260 h-30 v-25 h-25"/>
+            <path d="M20 60 h20 v90"/>
+          </g>
+          <g class="board-vias" fill="#2f9e7a" opacity="0.6">
+            <circle cx="20" cy="200" r="2"/><circle cx="80" cy="200" r="2"/><circle cx="80" cy="160" r="2"/>
+            <circle cx="20" cy="60" r="2"/><circle cx="40" cy="60" r="2"/>
+            <circle cx="395" cy="40" r="2"/><circle cx="355" cy="40" r="2"/>
+            <circle cx="395" cy="260" r="2"/>
+          </g>
+
+          <!-- tornillos decorativos -->
+          <g fill="#0a3327" stroke="#2f9e7a" stroke-width="1" opacity="0.7">
+            <circle cx="18" cy="18" r="5"/><circle cx="402" cy="18" r="5"/>
+            <circle cx="18" cy="282" r="5"/><circle cx="402" cy="282" r="5"/>
+          </g>
+
+          <!-- chipset decorativo (no interactivo) -->
+          <g transform="translate(150,255)">
+            <rect x="0" y="0" width="34" height="24" rx="2" fill="#2c3440" stroke="#0a3327" stroke-width="1"/>
+            <g stroke="#5b6472" stroke-width="1.4">
+              <line x1="4" y1="4" x2="30" y2="4"/><line x1="4" y1="9" x2="30" y2="9"/>
+              <line x1="4" y1="14" x2="30" y2="14"/><line x1="4" y1="19" x2="30" y2="19"/>
+            </g>
+          </g>
+
+          <!-- huella zona 1: socket CPU -->
+          <g transform="translate(56,67)">
+            <rect x="0" y="0" width="64" height="64" rx="3" fill="url(#socket-grad)" stroke="#0a3327" stroke-width="1.5"/>
+            <path d="M0 0 L14 0 L0 14 Z" fill="#c99a3f"/>
+            <g fill="#3a424d">
+              <circle cx="10" cy="10" r="1.3"/><circle cx="20" cy="10" r="1.3"/><circle cx="30" cy="10" r="1.3"/><circle cx="40" cy="10" r="1.3"/><circle cx="50" cy="10" r="1.3"/>
+              <circle cx="10" cy="20" r="1.3"/><circle cx="20" cy="20" r="1.3"/><circle cx="30" cy="20" r="1.3"/><circle cx="40" cy="20" r="1.3"/><circle cx="50" cy="20" r="1.3"/>
+              <circle cx="10" cy="30" r="1.3"/><circle cx="20" cy="30" r="1.3"/><circle cx="30" cy="30" r="1.3"/><circle cx="40" cy="30" r="1.3"/><circle cx="50" cy="30" r="1.3"/>
+              <circle cx="10" cy="40" r="1.3"/><circle cx="20" cy="40" r="1.3"/><circle cx="30" cy="40" r="1.3"/><circle cx="40" cy="40" r="1.3"/><circle cx="50" cy="40" r="1.3"/>
+              <circle cx="10" cy="50" r="1.3"/><circle cx="20" cy="50" r="1.3"/><circle cx="30" cy="50" r="1.3"/><circle cx="40" cy="50" r="1.3"/><circle cx="50" cy="50" r="1.3"/>
+            </g>
+          </g>
+
+          <!-- huella zona 2: dos ranuras RAM -->
+          <g transform="translate(168,36)">
+            <rect x="8" y="8" width="26" height="104" rx="2" fill="#12181f" stroke="#0a3327" stroke-width="1"/>
+            <rect x="50" y="8" width="26" height="104" rx="2" fill="#12181f" stroke="#0a3327" stroke-width="1"/>
+            <rect x="6" y="6" width="30" height="5" fill="#4d5763"/><rect x="6" y="109" width="30" height="5" fill="#4d5763"/>
+            <rect x="48" y="6" width="30" height="5" fill="#4d5763"/><rect x="48" y="109" width="30" height="5" fill="#4d5763"/>
+          </g>
+
+          <!-- huella zona 3: ranura PCIe -->
+          <g transform="translate(44,208)">
+            <rect x="0" y="0" width="198" height="20" rx="2" fill="#12181f" stroke="#0a3327" stroke-width="1"/>
+            <rect x="46" y="0" width="6" height="20" fill="#e8edf2" opacity="0.85"/>
+            <rect x="0" y="0" width="10" height="20" fill="#4d5763"/>
+          </g>
+
+          <!-- huella zona 4: ranura M.2 -->
+          <g transform="translate(292,208)">
+            <rect x="0" y="0" width="79" height="9" rx="1.5" fill="#12181f" stroke="#0a3327" stroke-width="1"/>
+            <circle cx="72" cy="15" r="3.4" fill="none" stroke="#8a94a0" stroke-width="1.3"/>
+          </g>
+
+          <!-- huella zona 5: conectores SATA -->
+          <g transform="translate(286,68)">
+            <rect x="0" y="0" width="70" height="18" rx="2" fill="#20242c" stroke="#0a3327" stroke-width="1"/>
+            <rect x="4" y="4" width="7" height="10" fill="#c94f4f"/><rect x="14" y="4" width="7" height="10" fill="#c94f4f"/>
+            <rect x="24" y="4" width="7" height="10" fill="#c94f4f"/><rect x="34" y="4" width="7" height="10" fill="#c94f4f"/>
+            <rect x="0" y="26" width="70" height="18" rx="2" fill="#20242c" stroke="#0a3327" stroke-width="1"/>
+            <rect x="4" y="30" width="7" height="10" fill="#c94f4f"/><rect x="14" y="30" width="7" height="10" fill="#c94f4f"/>
+            <rect x="24" y="30" width="7" height="10" fill="#c94f4f"/><rect x="34" y="30" width="7" height="10" fill="#c94f4f"/>
+          </g>
+
+          <text x="16" y="20" class="board-label">Placa base (esquema simplificado)</text>
         </svg>
 
         <div class="drop-zone dz-1" data-zone="1" style="left:8%; top:16%; width:26%; height:34%;"></div>

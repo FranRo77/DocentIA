@@ -11,11 +11,114 @@
 /* ------------------------------------------------------------------ */
 
 const ICONS = {
-  cpu: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="10" y="10" width="4" height="4" fill="currentColor"/><line x1="2" y1="9" x2="6" y2="9" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="15" x2="6" y2="15" stroke="currentColor" stroke-width="1.6"/><line x1="18" y1="9" x2="22" y2="9" stroke="currentColor" stroke-width="1.6"/><line x1="18" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="1.6"/><line x1="9" y1="2" x2="9" y2="6" stroke="currentColor" stroke-width="1.6"/><line x1="15" y1="2" x2="15" y2="6" stroke="currentColor" stroke-width="1.6"/><line x1="9" y1="18" x2="9" y2="22" stroke="currentColor" stroke-width="1.6"/><line x1="15" y1="18" x2="15" y2="22" stroke="currentColor" stroke-width="1.6"/></svg>',
-  ram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="6" y1="16" x2="6" y2="19" stroke="currentColor" stroke-width="1.6"/><line x1="10" y1="16" x2="10" y2="19" stroke="currentColor" stroke-width="1.6"/><line x1="14" y1="16" x2="14" y2="19" stroke="currentColor" stroke-width="1.6"/><line x1="18" y1="16" x2="18" y2="19" stroke="currentColor" stroke-width="1.6"/></svg>',
-  gpu: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="11" r="2.4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="15" cy="11" r="2.4" fill="none" stroke="currentColor" stroke-width="1.4"/><line x1="2" y1="18" x2="8" y2="18" stroke="currentColor" stroke-width="1.6"/></svg>',
-  ssd: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="7" y="11" width="4" height="2" fill="currentColor"/><rect x="13" y="11" width="4" height="2" fill="currentColor"/><path d="M4 8 L2 6 M20 8 L22 6" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>',
-  sata: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="12" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="15" y="10" width="6" height="4" fill="currentColor"/></svg>',
+  cpu: `<svg viewBox="0 0 48 48" aria-hidden="true">
+    <defs>
+      <linearGradient id="cpu-body" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#e8edf2"/><stop offset="0.5" stop-color="#c4ccd6"/><stop offset="1" stop-color="#9aa5b1"/>
+      </linearGradient>
+      <linearGradient id="cpu-pin" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#d8b25c"/><stop offset="1" stop-color="#a67c2e"/>
+      </linearGradient>
+    </defs>
+    <rect x="4" y="4" width="40" height="40" rx="3" fill="#7c8896"/>
+    <g opacity="0.9">
+      <rect x="1" y="10" width="4" height="3" fill="url(#cpu-pin)"/><rect x="1" y="17" width="4" height="3" fill="url(#cpu-pin)"/>
+      <rect x="1" y="24" width="4" height="3" fill="url(#cpu-pin)"/><rect x="1" y="31" width="4" height="3" fill="url(#cpu-pin)"/>
+      <rect x="43" y="10" width="4" height="3" fill="url(#cpu-pin)"/><rect x="43" y="17" width="4" height="3" fill="url(#cpu-pin)"/>
+      <rect x="43" y="24" width="4" height="3" fill="url(#cpu-pin)"/><rect x="43" y="31" width="4" height="3" fill="url(#cpu-pin)"/>
+      <rect x="10" y="1" width="3" height="4" fill="url(#cpu-pin)"/><rect x="17" y="1" width="3" height="4" fill="url(#cpu-pin)"/>
+      <rect x="24" y="1" width="3" height="4" fill="url(#cpu-pin)"/><rect x="31" y="1" width="3" height="4" fill="url(#cpu-pin)"/>
+      <rect x="10" y="43" width="3" height="4" fill="url(#cpu-pin)"/><rect x="17" y="43" width="3" height="4" fill="url(#cpu-pin)"/>
+      <rect x="24" y="43" width="3" height="4" fill="url(#cpu-pin)"/><rect x="31" y="43" width="3" height="4" fill="url(#cpu-pin)"/>
+    </g>
+    <rect x="6" y="6" width="36" height="36" rx="2" fill="url(#cpu-body)" stroke="#5b6472" stroke-width="0.6"/>
+    <path d="M8 8 L14 8 L8 14 Z" fill="#5b6472" opacity="0.55"/>
+    <rect x="15" y="15" width="18" height="18" rx="1" fill="#4a5665" opacity="0.35"/>
+  </svg>`,
+
+  ram: `<svg viewBox="0 0 48 48" aria-hidden="true">
+    <defs>
+      <linearGradient id="ram-pcb" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2f9e7a"/><stop offset="1" stop-color="#1c6a52"/>
+      </linearGradient>
+      <linearGradient id="ram-gold" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#f2d385"/><stop offset="1" stop-color="#c99a3f"/>
+      </linearGradient>
+    </defs>
+    <rect x="4" y="10" width="40" height="24" rx="2" fill="url(#ram-pcb)" stroke="#154f3d" stroke-width="0.6"/>
+    <rect x="7" y="14" width="7" height="10" rx="0.6" fill="#1c2230"/>
+    <rect x="17" y="14" width="7" height="10" rx="0.6" fill="#1c2230"/>
+    <rect x="27" y="14" width="7" height="10" rx="0.6" fill="#1c2230"/>
+    <rect x="8" y="15.4" width="5" height="1.6" fill="#4b5568"/>
+    <rect x="18" y="15.4" width="5" height="1.6" fill="#4b5568"/>
+    <rect x="28" y="15.4" width="5" height="1.6" fill="#4b5568"/>
+    <path d="M4 34 h40 v3 a2 2 0 0 1 -2 2 h-36 a2 2 0 0 1 -2 -2 Z" fill="url(#ram-gold)"/>
+    <rect x="22" y="34" width="2.4" height="5" fill="#2f9e7a"/>
+    <g stroke="#0f3a2c" stroke-width="0.6" opacity="0.5">
+      <line x1="8" y1="39" x2="8" y2="34"/><line x1="12" y1="39" x2="12" y2="34"/>
+      <line x1="17" y1="39" x2="17" y2="34"/><line x1="30" y1="39" x2="30" y2="34"/>
+      <line x1="35" y1="39" x2="35" y2="34"/><line x1="40" y1="39" x2="40" y2="34"/>
+    </g>
+  </svg>`,
+
+  gpu: `<svg viewBox="0 0 48 48" aria-hidden="true">
+    <defs>
+      <linearGradient id="gpu-shroud" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a5568"/><stop offset="1" stop-color="#252c38"/>
+      </linearGradient>
+      <radialGradient id="gpu-fan" cx="0.5" cy="0.4" r="0.65">
+        <stop offset="0" stop-color="#6b7688"/><stop offset="1" stop-color="#2f3541"/>
+      </radialGradient>
+      <linearGradient id="gpu-gold" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#f2d385"/><stop offset="1" stop-color="#c99a3f"/>
+      </linearGradient>
+    </defs>
+    <rect x="3" y="8" width="42" height="22" rx="3" fill="url(#gpu-shroud)" stroke="#161b24" stroke-width="0.6"/>
+    <circle cx="15" cy="19" r="7.5" fill="url(#gpu-fan)" stroke="#161b24" stroke-width="0.5"/>
+    <circle cx="33" cy="19" r="7.5" fill="url(#gpu-fan)" stroke="#161b24" stroke-width="0.5"/>
+    <g stroke="#9aa5b1" stroke-width="1" opacity="0.8">
+      <path d="M15 13 a6 6 0 0 1 5.2 3" fill="none"/>
+      <path d="M15 25 a6 6 0 0 1 -5.2 -3" fill="none"/>
+      <path d="M33 13 a6 6 0 0 1 5.2 3" fill="none"/>
+      <path d="M33 25 a6 6 0 0 1 -5.2 -3" fill="none"/>
+    </g>
+    <circle cx="15" cy="19" r="1.6" fill="#161b24"/><circle cx="33" cy="19" r="1.6" fill="#161b24"/>
+    <rect x="6" y="30" width="30" height="4" fill="#161b24"/>
+    <path d="M9 34 h24 v4 a2 2 0 0 1 -2 2 h-20 a2 2 0 0 1 -2 -2 Z" fill="url(#gpu-gold)"/>
+  </svg>`,
+
+  ssd: `<svg viewBox="0 0 48 48" aria-hidden="true">
+    <defs>
+      <linearGradient id="ssd-pcb" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2f6690"/><stop offset="1" stop-color="#1d4d72"/>
+      </linearGradient>
+      <linearGradient id="ssd-gold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f2d385"/><stop offset="1" stop-color="#c99a3f"/>
+      </linearGradient>
+    </defs>
+    <rect x="4" y="17" width="38" height="14" rx="2" fill="url(#ssd-pcb)" stroke="#123047" stroke-width="0.6"/>
+    <path d="M42 17 h4 v10 a2 2 0 0 1 -2 2 h-2 Z" fill="none"/>
+    <rect x="42" y="19" width="4" height="10" fill="url(#ssd-gold)"/>
+    <rect x="9" y="21" width="12" height="7" rx="0.8" fill="#12283b"/>
+    <rect x="24" y="21" width="7" height="7" rx="0.8" fill="#12283b"/>
+    <circle cx="35" cy="24.5" r="1.4" fill="#0e2030"/>
+    <path d="M9 31 a2 2 0 0 0 2 2 h3 a2 2 0 0 0 2 -2" fill="none" stroke="#0e2030" stroke-width="0.6" opacity="0.5"/>
+  </svg>`,
+
+  sata: `<svg viewBox="0 0 48 48" aria-hidden="true">
+    <defs>
+      <linearGradient id="sata-plastic" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a3f4a"/><stop offset="1" stop-color="#20242c"/>
+      </linearGradient>
+    </defs>
+    <path d="M4 22 h20 a2 2 0 0 1 2 2 v10 a2 2 0 0 1 -2 2 h-20 Z" fill="url(#sata-plastic)"/>
+    <g fill="#c94f4f">
+      <rect x="8" y="26" width="2.6" height="6"/><rect x="12" y="26" width="2.6" height="6"/>
+      <rect x="16" y="26" width="2.6" height="6"/><rect x="20" y="26" width="2.6" height="6"/>
+    </g>
+    <path d="M28 25 c8 -10 14 -10 16 -16" fill="none" stroke="#161b24" stroke-width="3" stroke-linecap="round"/>
+    <path d="M28 25 c8 -10 14 -10 16 -16" fill="none" stroke="#4a5568" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>`,
 };
 
 const COMPONENTS = [
@@ -328,6 +431,7 @@ function renderReto1() {
     const zoneId = zone.dataset.zone;
     const occupant = Object.entries(r1.assignments).find(([, z]) => z === zoneId);
     zone.innerHTML = "";
+    zone.appendChild(el("span", { class: "zone-number", "aria-hidden": "true" }, [zoneId]));
     if (occupant) {
       const component = COMPONENTS.find((c) => c.id === occupant[0]);
       zone.setAttribute("data-filled", "true");
@@ -335,14 +439,13 @@ function renderReto1() {
         "aria-label",
         ZONE_LABELS[zoneId] + ". Contiene: " + component.label + ". Pulsa para liberar esta zona."
       );
-      zone.appendChild(document.createTextNode(component.label));
+      zone.appendChild(el("span", { class: "zone-badge" }, [component.label]));
     } else {
       zone.setAttribute("data-filled", "false");
       zone.setAttribute(
         "aria-label",
         ZONE_LABELS[zoneId] + ". Zona vacía. Selecciona un componente y después esta zona."
       );
-      zone.appendChild(el("span", { class: "zone-mark" }, [ZONE_LABELS[zoneId]]));
     }
   });
 }
