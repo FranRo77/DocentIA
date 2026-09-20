@@ -362,6 +362,12 @@ function initReto1() {
     chip.addEventListener("click", () => onChipClick(component.id));
     chip.addEventListener("dragstart", (event) => {
       event.dataTransfer.setData("text/plain", component.id);
+      document.getElementById("reto1-board-wrap").classList.add("selecting");
+    });
+    chip.addEventListener("dragend", () => {
+      if (!state.reto1.selectedComponent) {
+        document.getElementById("reto1-board-wrap").classList.remove("selecting");
+      }
     });
     tray.appendChild(chip);
   });
@@ -451,6 +457,8 @@ function renderReto1() {
     chip.setAttribute("data-placed", placed ? "true" : "false");
     chip.setAttribute("aria-pressed", r1.selectedComponent === component.id ? "true" : "false");
   });
+
+  document.getElementById("reto1-board-wrap").classList.toggle("selecting", !!r1.selectedComponent);
 
   document.querySelectorAll(".drop-zone").forEach((zone) => {
     const zoneId = zone.dataset.zone;

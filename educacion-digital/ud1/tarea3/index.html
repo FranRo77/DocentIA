@@ -164,40 +164,68 @@
           <rect x="4" y="4" width="412" height="292" rx="12" fill="url(#fiber-weave)"></rect>
 
           <!-- trazas decorativas de circuito -->
-          <g class="board-traces" stroke="#1f7a5c" stroke-width="1.2" fill="none" opacity="0.5">
+          <g class="board-traces" stroke="#1f7a5c" stroke-width="1.1" fill="none" opacity="0.5">
             <path d="M20 205 h20 v-45 h20"/>
             <path d="M20 235 h20 v15 h40"/>
             <path d="M262 45 h15 v40"/>
             <path d="M262 130 h15 v30"/>
-            <path d="M200 165 v20 h40"/>
-            <path d="M300 172 h20 v20"/>
+            <path d="M200 165 v10 h20"/>
+            <path d="M330 238 h20 v-8 h20"/>
+            <path d="M110 260 v-8 h-20"/>
+            <path d="M270 255 h-15 v-10"/>
+            <path d="M180 20 v10 h-8"/>
+            <path d="M100 60 h-15 v20"/>
           </g>
-          <g class="board-vias" fill="#2f9e7a" opacity="0.55">
-            <circle cx="20" cy="205" r="2"/><circle cx="40" cy="205" r="2"/><circle cx="40" cy="160" r="2"/>
-            <circle cx="20" cy="235" r="2"/><circle cx="60" cy="250" r="2"/>
-            <circle cx="262" cy="45" r="2"/><circle cx="277" cy="85" r="2"/>
-            <circle cx="200" cy="185" r="2"/><circle cx="240" cy="185" r="2"/>
-            <circle cx="320" cy="172" r="2"/><circle cx="320" cy="192" r="2"/>
+          <g class="board-vias" fill="#2f9e7a" opacity="0.5">
+            <circle cx="20" cy="205" r="1.8"/><circle cx="40" cy="205" r="1.8"/><circle cx="40" cy="160" r="1.8"/>
+            <circle cx="20" cy="235" r="1.8"/><circle cx="60" cy="250" r="1.8"/>
+            <circle cx="262" cy="45" r="1.8"/><circle cx="277" cy="85" r="1.8"/>
+            <circle cx="200" cy="175" r="1.8"/><circle cx="220" cy="175" r="1.8"/>
+            <circle cx="395" cy="180" r="1.8"/><circle cx="395" cy="195" r="1.8"/>
+            <circle cx="90" cy="260" r="1.8"/><circle cx="255" cy="245" r="1.8"/>
+            <circle cx="180" cy="20" r="1.8"/><circle cx="85" cy="60" r="1.8"/>
+          </g>
+
+          <!-- serigrafía PCB (marcas abstractas, no legibles) -->
+          <g fill="#bfe6d6" opacity="0.22">
+            <rect x="146" y="160" width="14" height="2.2"/><rect x="146" y="165" width="9" height="2.2"/>
+            <rect x="230" y="165" width="12" height="2.2"/><rect x="230" y="170" width="7" height="2.2"/>
+            <rect x="330" y="235" width="12" height="2.2"/><rect x="330" y="240" width="8" height="2.2"/>
+            <rect x="70" y="245" width="12" height="2.2"/><rect x="20" y="270" width="10" height="2.2"/>
+            <rect x="393" y="160" width="10" height="2.2"/><rect x="120" y="18" width="10" height="2.2"/>
           </g>
 
           <!-- tornillos de anclaje -->
-          <g fill="#0a3327" stroke="#2f9e7a" stroke-width="1" opacity="0.7">
+          <g fill="#0a3327" stroke="#2f9e7a" stroke-width="1" opacity="0.65">
             <circle cx="18" cy="18" r="5"/><circle cx="402" cy="18" r="5"/>
             <circle cx="18" cy="282" r="5"/><circle cx="402" cy="282" r="5"/>
+            <circle cx="208" cy="291" r="4"/><circle cx="305" cy="16" r="4"/>
           </g>
 
-          <!-- panel de E/S trasero (borde izquierdo, decorativo) -->
-          <g transform="translate(9,44)" opacity="0.92" filter="url(#soft-shadow)">
-            <rect x="0" y="0" width="16" height="150" rx="2" fill="#3a424d" stroke="#0a3327" stroke-width="1"/>
-            <rect x="3" y="6" width="10" height="14" rx="2" fill="#171c22"/>
-            <rect x="3" y="24" width="10" height="8" rx="1.5" fill="#171c22"/>
-            <rect x="3" y="36" width="10" height="8" rx="1.5" fill="#171c22"/>
-            <circle cx="8" cy="52" r="4.5" fill="#171c22"/>
-            <rect x="3" y="62" width="10" height="10" rx="1.5" fill="#171c22"/>
-            <rect x="3" y="76" width="10" height="6" fill="#c99a3f" opacity="0.8"/>
-            <rect x="3" y="86" width="10" height="6" fill="#c94f4f" opacity="0.7"/>
-            <rect x="3" y="96" width="10" height="14" rx="2" fill="#171c22"/>
-            <rect x="3" y="114" width="10" height="14" rx="2" fill="#171c22"/>
+          <!-- panel de E/S trasero (borde izquierdo): USB, Ethernet y audio -->
+          <g transform="translate(9,40)" opacity="0.95" filter="url(#soft-shadow)">
+            <rect x="0" y="0" width="17" height="176" rx="2" fill="#3a424d" stroke="#0a3327" stroke-width="1"/>
+            <!-- pareja de puertos USB apilados -->
+            <rect x="3" y="6" width="11" height="9" rx="1.5" fill="#101318"/>
+            <rect x="3" y="17" width="11" height="9" rx="1.5" fill="#101318"/>
+            <rect x="3" y="31" width="11" height="9" rx="1.5" fill="#101318"/>
+            <rect x="3" y="42" width="11" height="9" rx="1.5" fill="#101318"/>
+            <!-- Ethernet RJ45 -->
+            <rect x="2.5" y="56" width="12" height="15" rx="1.2" fill="#0c0f13" stroke="#171c22" stroke-width="0.6"/>
+            <rect x="4.5" y="59" width="8" height="9" fill="#1d232b"/>
+            <!-- salida de vídeo -->
+            <rect x="3" y="76" width="11" height="7" rx="1" fill="#12181f"/>
+            <!-- jacks de audio (colores reales del panel) -->
+            <circle cx="8.5" cy="92" r="3.6" fill="#3ba55c" stroke="#0a3327" stroke-width="0.6"/>
+            <circle cx="8.5" cy="101" r="3.6" fill="#4a7fd6" stroke="#0a3327" stroke-width="0.6"/>
+            <circle cx="8.5" cy="110" r="3.6" fill="#d67fae" stroke="#0a3327" stroke-width="0.6"/>
+            <!-- USB-C -->
+            <rect x="2.5" y="122" width="12" height="7" rx="3" fill="#12181f" stroke="#1d232b" stroke-width="0.6"/>
+            <!-- pareja USB extra -->
+            <rect x="3" y="136" width="11" height="9" rx="1.5" fill="#101318"/>
+            <rect x="3" y="147" width="11" height="9" rx="1.5" fill="#101318"/>
+            <!-- botón BIOS flash -->
+            <circle cx="8.5" cy="164" r="3" fill="#2c3440" stroke="#171c22" stroke-width="0.6"/>
           </g>
 
           <!-- VRM: fase de alimentación de la CPU (decorativo) -->
@@ -208,6 +236,26 @@
             <rect x="18" y="0" width="14" height="14" rx="2" fill="url(#choke-grad)" stroke="#3a424d" stroke-width="0.8"/>
             <rect x="36" y="0" width="14" height="14" rx="2" fill="url(#choke-grad)" stroke="#3a424d" stroke-width="0.8"/>
             <rect x="54" y="0" width="14" height="14" rx="2" fill="url(#choke-grad)" stroke="#3a424d" stroke-width="0.8"/>
+          </g>
+          <!-- condensadores de la VRM (decorativos) -->
+          <g fill="#e8edf2" stroke="#4d5763" stroke-width="1">
+            <g transform="translate(150,42)"><circle r="6"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#8a94a0" stroke-width="1"/><line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#8a94a0" stroke-width="1"/></g>
+            <g transform="translate(150,90)"><circle r="6"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#8a94a0" stroke-width="1"/><line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#8a94a0" stroke-width="1"/></g>
+            <g transform="translate(150,124)"><circle r="5"/><line x1="0" y1="-3" x2="0" y2="3" stroke="#8a94a0" stroke-width="0.8"/><line x1="-3" y1="0" x2="3" y2="0" stroke="#8a94a0" stroke-width="0.8"/></g>
+            <g transform="translate(263,175)"><circle r="6"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#8a94a0" stroke-width="1"/><line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#8a94a0" stroke-width="1"/></g>
+            <g transform="translate(263,120)"><circle r="5"/><line x1="0" y1="-3" x2="0" y2="3" stroke="#8a94a0" stroke-width="0.8"/><line x1="-3" y1="0" x2="3" y2="0" stroke="#8a94a0" stroke-width="0.8"/></g>
+          </g>
+
+          <!-- conector EPS de alimentación de la CPU (borde superior, decorativo) -->
+          <g transform="translate(190,7)" opacity="0.95" filter="url(#soft-shadow)">
+            <rect x="0" y="0" width="34" height="17" rx="2" fill="#12181f" stroke="#000000" stroke-width="1"/>
+            <g fill="#e8edf2">
+              <rect x="3" y="3" width="4.5" height="4.5" rx="0.8"/><rect x="9" y="3" width="4.5" height="4.5" rx="0.8"/>
+              <rect x="15" y="3" width="4.5" height="4.5" rx="0.8"/><rect x="21" y="3" width="4.5" height="4.5" rx="0.8"/>
+              <rect x="3" y="9.5" width="4.5" height="4.5" rx="0.8"/><rect x="9" y="9.5" width="4.5" height="4.5" rx="0.8"/>
+              <rect x="15" y="9.5" width="4.5" height="4.5" rx="0.8"/><rect x="21" y="9.5" width="4.5" height="4.5" rx="0.8"/>
+            </g>
+            <rect x="27" y="4" width="5" height="9" rx="1" fill="#2c3440"/>
           </g>
 
           <!-- conector de alimentación principal ATX (borde derecho, decorativo) -->
@@ -229,17 +277,24 @@
             </g>
           </g>
 
-          <!-- condensadores electrolíticos (decorativos) -->
-          <g fill="#e8edf2" stroke="#4d5763" stroke-width="1">
-            <g transform="translate(150,42)"><circle r="6"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#8a94a0" stroke-width="1"/><line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#8a94a0" stroke-width="1"/></g>
-            <g transform="translate(150,90)"><circle r="6"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#8a94a0" stroke-width="1"/><line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#8a94a0" stroke-width="1"/></g>
-            <g transform="translate(263,175)"><circle r="6"/><line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#8a94a0" stroke-width="1"/><line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#8a94a0" stroke-width="1"/></g>
+          <!-- ranuras PCIe x1 (decorativas, junto a la x16) -->
+          <g filter="url(#soft-shadow)">
+            <rect x="60" y="172" width="38" height="11" rx="1.5" fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
+            <rect x="115" y="172" width="38" height="11" rx="1.5" fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
+          </g>
+
+          <!-- cabecera USB interna (decorativa) -->
+          <g transform="translate(178,163)" fill="#101318" stroke="#4d5763" stroke-width="0.6" filter="url(#soft-shadow)">
+            <rect x="0" y="0" width="18" height="9" rx="1"/>
+            <g fill="#8a94a0"><circle cx="3" cy="2.5" r="0.7"/><circle cx="7" cy="2.5" r="0.7"/><circle cx="11" cy="2.5" r="0.7"/><circle cx="15" cy="2.5" r="0.7"/>
+            <circle cx="3" cy="6.5" r="0.7"/><circle cx="7" cy="6.5" r="0.7"/><circle cx="11" cy="6.5" r="0.7"/><circle cx="15" cy="6.5" r="0.7"/></g>
           </g>
 
           <!-- conectores de ventilador (decorativos) -->
           <g fill="#171c22" stroke="#4d5763" stroke-width="0.8">
-            <rect x="196" y="160" width="10" height="7" rx="1"/>
-            <rect x="300" y="150" width="7" height="10" rx="1"/>
+            <rect x="205" y="163" width="8" height="6" rx="1"/>
+            <rect x="345" y="182" width="6" height="8" rx="1"/>
+            <rect x="34" y="182" width="6" height="8" rx="1"/>
           </g>
 
           <!-- pila CMOS (decorativa) -->
@@ -248,19 +303,47 @@
             <circle r="9" fill="none" stroke="#0a3327" stroke-width="1.4" stroke-dasharray="1.5 2"/>
           </g>
 
-          <!-- conector de panel frontal (decorativo) -->
-          <g transform="translate(60,260)" fill="#171c22" stroke="#4d5763" stroke-width="0.7">
+          <!-- cabecera de panel frontal (decorativa) -->
+          <g transform="translate(60,262)" fill="#171c22" stroke="#4d5763" stroke-width="0.7" filter="url(#soft-shadow)">
             <rect x="0" y="0" width="24" height="10" rx="1"/>
-            <g fill="#c94f4f" opacity="0.7"><circle cx="4" cy="3" r="1"/><circle cx="4" cy="7" r="1"/></g>
+            <g fill="#9aa5b1" opacity="0.8"><circle cx="4" cy="3" r="1"/><circle cx="4" cy="7" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="9" cy="7" r="1"/></g>
+          </g>
+
+          <!-- zona de audio integrado: códec y condensadores (decorativa) -->
+          <g transform="translate(95,258)" filter="url(#soft-shadow)">
+            <rect x="0" y="0" width="16" height="16" rx="1.5" fill="#20242c" stroke="#0a3327" stroke-width="0.8"/>
+            <g stroke="#4d5763" stroke-width="0.8"><line x1="2" y1="3" x2="14" y2="3"/><line x1="2" y1="6" x2="14" y2="6"/><line x1="2" y1="9" x2="14" y2="9"/><line x1="2" y1="12" x2="14" y2="12"/></g>
+            <g fill="#e8edf2" stroke="#8a94a0" stroke-width="0.8">
+              <circle cx="22" cy="4" r="3"/><circle cx="22" cy="12" r="3"/>
+            </g>
           </g>
 
           <!-- chipset con disipador (decorativo) -->
-          <g transform="translate(150,255)" filter="url(#soft-shadow)">
-            <rect x="0" y="0" width="34" height="24" rx="2" fill="#2c3440" stroke="#0a3327" stroke-width="1"/>
+          <g transform="translate(148,250)" filter="url(#soft-shadow)">
+            <rect x="0" y="0" width="40" height="30" rx="2" fill="#2c3440" stroke="#0a3327" stroke-width="1"/>
             <g stroke="#5b6472" stroke-width="1.4">
-              <line x1="4" y1="4" x2="30" y2="4"/><line x1="4" y1="9" x2="30" y2="9"/>
-              <line x1="4" y1="14" x2="30" y2="14"/><line x1="4" y1="19" x2="30" y2="19"/>
+              <line x1="4" y1="5" x2="36" y2="5"/><line x1="4" y1="10" x2="36" y2="10"/>
+              <line x1="4" y1="15" x2="36" y2="15"/><line x1="4" y1="20" x2="36" y2="20"/><line x1="4" y1="25" x2="36" y2="25"/>
             </g>
+          </g>
+
+          <!-- segunda ranura M.2 con disipador (decorativa, no interactiva) -->
+          <g transform="translate(300,269)" filter="url(#soft-shadow)">
+            <rect x="0" y="4" width="70" height="10" rx="1.5" fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
+            <rect x="-2" y="0" width="74" height="18" rx="2" fill="url(#choke-grad)" stroke="#3a424d" stroke-width="0.8" opacity="0.94"/>
+            <g stroke="#8a94a0" stroke-width="0.7" opacity="0.6"><line x1="4" y1="3" x2="4" y2="15"/><line x1="12" y1="3" x2="12" y2="15"/><line x1="20" y1="3" x2="20" y2="15"/><line x1="28" y1="3" x2="28" y2="15"/><line x1="36" y1="3" x2="36" y2="15"/><line x1="44" y1="3" x2="44" y2="15"/><line x1="52" y1="3" x2="52" y2="15"/><line x1="60" y1="3" x2="60" y2="15"/></g>
+          </g>
+
+          <!-- puertos SATA adicionales (decorativos, no interactivos) -->
+          <g transform="translate(283,158)" filter="url(#soft-shadow)">
+            <path d="M0 3 h44 a1.6 1.6 0 0 1 1.6 1.6 v9 a1.6 1.6 0 0 1 -1.6 1.6 h-28 l-3 -3 h-13 a1.6 1.6 0 0 1 -1.6 -1.6 v-6 a1.6 1.6 0 0 1 1.6 -1.6 Z"
+                  fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
+            <rect x="4" y="6" width="36" height="4.4" rx="0.8" fill="#1c1f24"/>
+          </g>
+          <g transform="translate(283,178)" filter="url(#soft-shadow)">
+            <path d="M0 3 h44 a1.6 1.6 0 0 1 1.6 1.6 v9 a1.6 1.6 0 0 1 -1.6 1.6 h-28 l-3 -3 h-13 a1.6 1.6 0 0 1 -1.6 -1.6 v-6 a1.6 1.6 0 0 1 1.6 -1.6 Z"
+                  fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
+            <rect x="4" y="6" width="36" height="4.4" rx="0.8" fill="#1c1f24"/>
           </g>
 
           <!-- huella zona 1: socket CPU tipo LGA (marco negro, pines dorados, palanca metálica) -->

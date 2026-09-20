@@ -454,8 +454,16 @@ main {
   justify-content: center;
   padding: 0.2rem;
   cursor: pointer;
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.28);
+  box-shadow: none;
   transition: box-shadow 0.15s ease;
+}
+
+/* Antes de interactuar, la placa se ve como una imagen normal: sin aros
+   permanentes. Solo al seleccionar o arrastrar un componente aparece un
+   resalte muy discreto sobre las cinco zonas posibles, sin indicar cuál
+   es la correcta. */
+.board-wrap.selecting .drop-zone:not([data-filled="true"]) {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
 }
 
 .drop-zone:hover,
@@ -493,6 +501,16 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.board-wrap.selecting .zone-number,
+.drop-zone:hover .zone-number,
+.drop-zone:focus-visible .zone-number,
+.drop-zone[data-filled="true"] .zone-number,
+.drop-zone[data-result] .zone-number {
+  opacity: 1;
 }
 
 .zone-badge {
