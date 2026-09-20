@@ -43,6 +43,7 @@ educacion-digital/ud1/tarea3/
   app.js       → datos de las preguntas y toda la lógica interactiva
   assets/
     ATTRIBUTIONS.md → créditos y licencias (ver nota más abajo)
+    logo.png, favicon-32.png, favicon-180.png → logo e iconos de pestaña
   README.md    → este archivo
 ```
 
@@ -80,10 +81,13 @@ prefieres no restringir el ID a una lista cerrada, elimina la comprobación
 
 ## Cómo sustituir imágenes
 
-Actualmente **no se usa ninguna imagen externa**: el esquema de la placa
-base y los iconos de componentes son SVG propios, generados directamente
-en `app.js` (constante `ICONS`) y en el `<svg class="board">` de
-`index.html`. Motivo y detalle en `assets/ATTRIBUTIONS.md`.
+El esquema de la placa base y los iconos de componentes son SVG propios,
+generados directamente en `app.js` (constante `ICONS`) y en el
+`<svg class="board">` de `index.html`; no proceden de ningún banco de
+imágenes. `assets/logo.png` es la única imagen bitmap: el logo de la
+cabecera, proporcionado directamente por el propietario del proyecto (no
+descargado de internet). Motivo y detalle completo en
+`assets/ATTRIBUTIONS.md`.
 
 Si se quiere incorporar una imagen real con licencia verificada
 (por ejemplo, de Wikimedia Commons):

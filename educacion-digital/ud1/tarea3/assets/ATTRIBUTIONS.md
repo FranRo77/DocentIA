@@ -2,18 +2,32 @@
 
 ## Resumen
 
-Esta actividad **no utiliza ninguna imagen externa** (fotografía, ilustración
-ni recurso descargado de Wikimedia Commons ni de ningún otro banco de
-imágenes).
+Esta actividad **no utiliza ninguna imagen descargada de un banco de
+imágenes, buscador o sitio de terceros** (ni de Wikimedia Commons ni de
+ningún otro).
 
-Todos los elementos visuales —el esquema de la placa base y los iconos de
-los componentes (CPU, RAM, GPU, SSD M.2, SATA)— son **gráficos vectoriales
-(SVG) originales**, creados específicamente para esta actividad y
-embebidos directamente en `app.js` e `index.html`.
+Todos los elementos interactivos —el esquema de la placa base y los
+iconos de los componentes (CPU, RAM, GPU, SSD M.2, SATA)— son **gráficos
+vectoriales (SVG) originales**, creados específicamente para esta
+actividad y embebidos directamente en `app.js` e `index.html`. No aplica
+tabla de atribución para estos elementos: no hay autor externo, URL de
+origen ni licencia que citar, porque no se ha incorporado material de
+terceros.
 
-Por tanto, no aplica ninguna tabla de atribución: no hay autor externo,
-URL de origen ni licencia que citar, porque no se ha incorporado material
-de terceros.
+El logo del encabezado (`assets/logo.png`) es una excepción: es una
+imagen bitmap, no SVG. Ver la tabla siguiente para su procedencia.
+
+| Campo | Valor |
+|---|---|
+| Nombre del archivo | `assets/logo.png` (y las variantes `favicon-32.png`, `favicon-180.png`) |
+| Procedencia | Proporcionada directamente por el propietario del proyecto en la conversación de trabajo, no descargada de ningún banco de imágenes ni buscador |
+| Autor / licencia | Sin datos de autoría o licencia de terceros que registrar, al no proceder de una fuente externa publicada |
+| Modificaciones realizadas | Fondo blanco original convertido a transparente por clave de color (recorte al contorno circular), recorte al área con contenido y reescalado a 256×256 px (logo) y 32/180 px (favicons) |
+
+Si en el futuro se sustituye este logo por un recurso de un banco de
+imágenes externo, debe verificarse y documentarse su licencia exacta
+(autor, URL, licencia, URL de la licencia) antes de incorporarlo, igual
+que para cualquier otra imagen de este proyecto.
 
 ## Motivo de esta decisión
 

@@ -12,7 +12,10 @@ personales.
 
 Cada actividad es autocontenida (su propio `index.html`, `styles.css`,
 `app.js` y `assets/`) para poder mantenerla, copiarla o archivarla de
-forma independiente.
+forma independiente. La raíz tiene su propia `index.html` a modo de
+portada y una carpeta `assets/` con el logo del proyecto (ver
+`educacion-digital/ud1/tarea3/assets/ATTRIBUTIONS.md` para su
+procedencia).
 
 Materias y actividades disponibles:
 
