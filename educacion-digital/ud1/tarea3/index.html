@@ -142,6 +142,9 @@
               <stop offset="0.55" stop-color="#d4af52"/>
               <stop offset="1" stop-color="#9c7423"/>
             </radialGradient>
+            <linearGradient id="pcie-steel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e2e8ed"/><stop offset="0.45" stop-color="#aab3bb"/><stop offset="1" stop-color="#7a838b"/>
+            </linearGradient>
             <radialGradient id="board-sheen" cx="22%" cy="14%" r="75%">
               <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
               <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.04"/>
@@ -401,58 +404,87 @@
 
           <!-- huella zona 2: dos ranuras RAM (plástico negro real + clips de expulsión) -->
           <g transform="translate(168,36)" filter="url(#soft-shadow)">
+            <!-- ranura izquierda -->
             <rect x="8" y="10" width="26" height="98" rx="1.5" fill="url(#black-plastic)" stroke="#000000" stroke-width="1"/>
-            <rect x="50" y="10" width="26" height="98" rx="1.5" fill="url(#black-plastic)" stroke="#000000" stroke-width="1"/>
+            <rect x="9.5" y="11.5" width="23" height="1.3" fill="#7a828c" opacity="0.7"/>
             <rect x="11" y="13" width="20" height="92" fill="#000000"/>
+            <rect x="11" y="13" width="20" height="4" fill="#1c2027" opacity="0.9"/>
+            <rect x="19" y="46" width="3" height="6" fill="#12181f"/>
+            <!-- ranura derecha -->
+            <rect x="50" y="10" width="26" height="98" rx="1.5" fill="url(#black-plastic)" stroke="#000000" stroke-width="1"/>
+            <rect x="51.5" y="11.5" width="23" height="1.3" fill="#7a828c" opacity="0.7"/>
             <rect x="53" y="13" width="20" height="92" fill="#000000"/>
-            <rect x="19" y="13" width="3" height="92" fill="#2b2e33"/>
-            <rect x="61" y="13" width="3" height="92" fill="#2b2e33"/>
-            <path d="M4 8 l6 -6 h6 l6 6 Z" fill="#6b7178"/><path d="M4 110 l6 6 h6 l6 -6 Z" fill="#6b7178"/>
-            <path d="M46 8 l6 -6 h6 l6 6 Z" fill="#6b7178"/><path d="M46 110 l6 6 h6 l6 -6 Z" fill="#6b7178"/>
+            <rect x="53" y="13" width="20" height="4" fill="#1c2027" opacity="0.9"/>
+            <rect x="61" y="46" width="3" height="6" fill="#12181f"/>
+            <!-- clips de expulsión (palanca + pivote) -->
+            <g fill="#7a828c" stroke="#3a3e45" stroke-width="0.5">
+              <path d="M6 10 C6 6.5 9 4 13 3.6 L21 2 C22 6 22 8 21 10.5 L13 9.5 C9.5 9.5 6 9.8 6 10 Z"/>
+              <path d="M6 108 C6 111.5 9 114 13 114.4 L21 116 C22 112 22 110 21 107.5 L13 108.5 C9.5 108.5 6 108.2 6 108 Z"/>
+              <path d="M48 10 C48 6.5 51 4 55 3.6 L63 2 C64 6 64 8 63 10.5 L55 9.5 C51.5 9.5 48 9.8 48 10 Z"/>
+              <path d="M48 108 C48 111.5 51 114 55 114.4 L63 116 C64 112 64 110 63 107.5 L55 108.5 C51.5 108.5 48 108.2 48 108 Z"/>
+            </g>
+            <g fill="#4a4f57"><circle cx="8" cy="9" r="1.4"/><circle cx="8" cy="109" r="1.4"/><circle cx="50" cy="9" r="1.4"/><circle cx="50" cy="109" r="1.4"/></g>
           </g>
 
-          <!-- huella zona 3: ranura PCIe (con pestaña de anclaje) -->
+          <!-- huella zona 3: ranura PCIe x16 (refuerzo metálico, pestaña de anclaje) -->
           <g transform="translate(44,208)" filter="url(#soft-shadow)">
             <rect x="0" y="0" width="198" height="20" rx="2" fill="url(#black-plastic-h)" stroke="#000000" stroke-width="1"/>
-            <rect x="0" y="-1.4" width="198" height="3" fill="#c3ccd4" opacity="0.85"/>
-            <rect x="46" y="-1.4" width="7" height="22.8" fill="#0e4636"/>
+            <rect x="2" y="2" width="194" height="3" fill="#050607" opacity="0.85"/>
+            <!-- refuerzo de acero (Q-Shield) -->
+            <rect x="0" y="-2.2" width="198" height="4.4" fill="url(#pcie-steel)"/>
+            <rect x="0" y="-2.2" width="198" height="1" fill="#f5f8fa" opacity="0.7"/>
+            <rect x="-2" y="-4" width="9" height="8" rx="1" fill="url(#pcie-steel)" stroke="#6b7178" stroke-width="0.5"/>
+            <rect x="191" y="-4" width="9" height="8" rx="1" fill="url(#pcie-steel)" stroke="#6b7178" stroke-width="0.5"/>
+            <!-- muesca de codificación (key) -->
+            <rect x="46" y="-2.2" width="7" height="24.4" fill="#0e4636"/>
+            <!-- pestaña de anclaje con bisagra -->
+            <rect x="184" y="-5.5" width="12" height="4" rx="1" fill="url(#pcie-steel)"/>
+            <rect x="186" y="-8.5" width="8" height="6" rx="1" fill="#c3ccd4" stroke="#6b7178" stroke-width="0.6"/>
             <rect x="0" y="0" width="11" height="20" fill="#3a3e45"/>
-            <rect x="188" y="-4.5" width="8" height="7" rx="1" fill="#9aa5b1" stroke="#4d5763" stroke-width="0.6"/>
           </g>
 
-          <!-- huella zona 4: ranura M.2 (con conector dorado y tornillo) -->
-          <g transform="translate(292,206)" filter="url(#soft-shadow)">
-            <rect x="0" y="0" width="22" height="11" rx="1.5" fill="#0c3a2c"/>
-            <g stroke="url(#gold-edge)" stroke-width="1.1">
-              <line x1="1.5" y1="1.4" x2="1.5" y2="9.6"/><line x1="4" y1="1.4" x2="4" y2="9.6"/><line x1="6.5" y1="1.4" x2="6.5" y2="9.6"/>
-              <line x1="9" y1="1.4" x2="9" y2="9.6"/><line x1="11.5" y1="1.4" x2="11.5" y2="9.6"/><line x1="14" y1="1.4" x2="14" y2="9.6"/>
-              <line x1="16.5" y1="1.4" x2="16.5" y2="9.6"/><line x1="19" y1="1.4" x2="19" y2="9.6"/>
+          <!-- huella zona 4: ranura M.2 (conector dorado, carcasa y tornillo con base) -->
+          <g transform="translate(292,204)" filter="url(#soft-shadow)">
+            <!-- carcasa plástica del zócalo -->
+            <rect x="-1.5" y="-1.5" width="25" height="16" rx="1.5" fill="url(#black-plastic)" stroke="#000000" stroke-width="0.7"/>
+            <rect x="0" y="1" width="22" height="11" rx="1.2" fill="#0c3a2c"/>
+            <g stroke="url(#gold-edge)" stroke-width="1.05">
+              <line x1="1.5" y1="2.4" x2="1.5" y2="10.6"/><line x1="3.8" y1="2.4" x2="3.8" y2="10.6"/><line x1="6.1" y1="2.4" x2="6.1" y2="10.6"/>
+              <line x1="8.4" y1="2.4" x2="8.4" y2="10.6"/><line x1="10.7" y1="2.4" x2="10.7" y2="10.6"/><line x1="13" y1="2.4" x2="13" y2="10.6"/>
+              <line x1="15.3" y1="2.4" x2="15.3" y2="10.6"/><line x1="17.6" y1="2.4" x2="17.6" y2="10.6"/><line x1="19.9" y1="2.4" x2="19.9" y2="10.6"/>
             </g>
-            <rect x="20" y="1" width="65" height="9" rx="1" fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
-            <circle cx="78" cy="5.5" r="4.2" fill="url(#choke-grad)" stroke="#3a424d" stroke-width="0.8"/>
-            <path d="M75.4 5.5 h5.2 M78 2.9 v5.2" stroke="#2c3138" stroke-width="0.9"/>
+            <rect x="1" y="2.4" width="20" height="1.6" fill="#082a1f" opacity="0.7"/>
+            <!-- cuerpo de la ranura -->
+            <rect x="20" y="3" width="65" height="9" rx="1" fill="url(#black-plastic-h)" stroke="#000000" stroke-width="0.8"/>
+            <rect x="21" y="4" width="63" height="1.2" fill="#4a4f57" opacity="0.7"/>
+            <!-- base metálica del estándof + tornillo -->
+            <circle cx="78" cy="7.5" r="5.6" fill="#8a94a0" opacity="0.55"/>
+            <circle cx="78" cy="7.5" r="4.4" fill="url(#choke-grad)" stroke="#3a424d" stroke-width="0.8"/>
+            <path d="M75.2 7.5 h5.6 M78 4.7 v5.6" stroke="#2c3138" stroke-width="1"/>
           </g>
 
-          <!-- huella zona 5: conectores SATA (plástico negro real, muesca en L) -->
+          <!-- huella zona 5: conectores SATA (plástico negro real, muesca en L, contactos) -->
           <g transform="translate(283,64)" filter="url(#soft-shadow)">
             <g id="sata-port-a">
               <path d="M0 3 h60 a2 2 0 0 1 2 2 v12 a2 2 0 0 1 -2 2 h-38 l-4 -4 h-18 a2 2 0 0 1 -2 -2 v-8 a2 2 0 0 1 2 -2 Z"
                     fill="url(#black-plastic-h)" stroke="#000000" stroke-width="1"/>
-              <rect x="6" y="7" width="50" height="6" rx="1" fill="#1c1f24"/>
-              <g fill="#8a94a0" opacity="0.85">
-                <rect x="8" y="8" width="1.3" height="4"/><rect x="13" y="8" width="1.3" height="4"/><rect x="18" y="8" width="1.3" height="4"/>
-                <rect x="24" y="8" width="1.3" height="4"/><rect x="29" y="8" width="1.3" height="4"/><rect x="34" y="8" width="1.3" height="4"/>
-                <rect x="39" y="8" width="1.3" height="4"/>
+              <path d="M2 3.2 h58 a1.4 1.4 0 0 1 1.4 1.4" fill="none" stroke="#7a828c" stroke-width="0.7" opacity="0.65"/>
+              <rect x="6" y="7" width="50" height="6" rx="1" fill="#0e1114" stroke="#000000" stroke-width="0.4"/>
+              <g fill="url(#pin-gold)" opacity="0.9">
+                <rect x="8" y="8" width="1.4" height="4" rx="0.3"/><rect x="13" y="8" width="1.4" height="4" rx="0.3"/><rect x="18" y="8" width="1.4" height="4" rx="0.3"/>
+                <rect x="24" y="8" width="1.4" height="4" rx="0.3"/><rect x="29" y="8" width="1.4" height="4" rx="0.3"/><rect x="34" y="8" width="1.4" height="4" rx="0.3"/>
+                <rect x="39" y="8" width="1.4" height="4" rx="0.3"/>
               </g>
             </g>
             <g id="sata-port-b" transform="translate(0,26)">
               <path d="M0 3 h60 a2 2 0 0 1 2 2 v12 a2 2 0 0 1 -2 2 h-38 l-4 -4 h-18 a2 2 0 0 1 -2 -2 v-8 a2 2 0 0 1 2 -2 Z"
                     fill="url(#black-plastic-h)" stroke="#000000" stroke-width="1"/>
-              <rect x="6" y="7" width="50" height="6" rx="1" fill="#1c1f24"/>
-              <g fill="#8a94a0" opacity="0.85">
-                <rect x="8" y="8" width="1.3" height="4"/><rect x="13" y="8" width="1.3" height="4"/><rect x="18" y="8" width="1.3" height="4"/>
-                <rect x="24" y="8" width="1.3" height="4"/><rect x="29" y="8" width="1.3" height="4"/><rect x="34" y="8" width="1.3" height="4"/>
-                <rect x="39" y="8" width="1.3" height="4"/>
+              <path d="M2 3.2 h58 a1.4 1.4 0 0 1 1.4 1.4" fill="none" stroke="#7a828c" stroke-width="0.7" opacity="0.65"/>
+              <rect x="6" y="7" width="50" height="6" rx="1" fill="#0e1114" stroke="#000000" stroke-width="0.4"/>
+              <g fill="url(#pin-gold)" opacity="0.9">
+                <rect x="8" y="8" width="1.4" height="4" rx="0.3"/><rect x="13" y="8" width="1.4" height="4" rx="0.3"/><rect x="18" y="8" width="1.4" height="4" rx="0.3"/>
+                <rect x="24" y="8" width="1.4" height="4" rx="0.3"/><rect x="29" y="8" width="1.4" height="4" rx="0.3"/><rect x="34" y="8" width="1.4" height="4" rx="0.3"/>
+                <rect x="39" y="8" width="1.4" height="4" rx="0.3"/>
               </g>
             </g>
           </g>
