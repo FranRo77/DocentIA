@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarea 4 · Simulacro CA1.1 · Educación Digital 3.º ESO</title>
+<style>
+:root{
+  --bg:#f4f1e8;
+  --paper:#fffdf8;
+  --ink:#20303b;
+  --muted:#65737b;
+  --line:#d8d3c8;
+  --accent:#1f6d69;
+  --accent-soft:#e6f0ee;
+  --warn:#8c5a20;
+  --bad:#8a3e3e;
+  --good:#2f6b4f;
+  --shadow:0 10px 28px rgba(32,48,59,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height:1.5;
+}
+main{max-width:920px;margin:0 auto;padding:24px 16px 56px}
+.hero-head{display:flex;gap:18px;align-items:center;margin-bottom:10px}
+.class-avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;flex:0 0 88px;border:3px solid #d7c7a2;box-shadow:0 5px 14px rgba(32,48,59,.12)}
+@media(max-width:560px){.hero-head{align-items:flex-start}.class-avatar{width:72px;height:72px;flex-basis:72px}}
+.hero{
+  background:var(--paper); border:1px solid var(--line); border-radius:22px;
+  box-shadow:var(--shadow); padding:28px; margin-bottom:18px;
+}
+.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.1;margin:.35rem 0 .55rem}
+h2{font-size:1.35rem;margin:0 0 .75rem}
+h3{font-size:1.05rem;margin:0 0 .45rem}
+p{margin:.45rem 0 .9rem}
+.small{font-size:.9rem;color:var(--muted)}
+.notice{
+  margin:16px 0; padding:14px 16px; border-radius:14px;
+  background:var(--accent-soft); border:1px solid #bdd8d3;
+}
+.grid{display:grid;gap:12px}
+@media(min-width:760px){.grid.two{grid-template-columns:1fr 1fr}}
+label{font-weight:700;display:block;margin-bottom:6px}
+input[type=text], textarea, select{
+  width:100%; border:1px solid #bfc8c9; border-radius:12px; background:white;
+  color:var(--ink); padding:11px 12px; font:inherit;
+}
+textarea{min-height:120px;resize:vertical}
+button{
+  border:0;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;
+  cursor:pointer;background:var(--accent);color:white;
+}
+button.secondary{background:#e9eceb;color:var(--ink);border:1px solid #ccd3d1}
+button.ghost{background:transparent;color:var(--accent);border:1px solid #9fc1bc}
+button:disabled{opacity:.45;cursor:not-allowed}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  padding:22px;box-shadow:var(--shadow);margin:14px 0;
+}
+.stepbar{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.progress{height:9px;flex:1;background:#e0ddd4;border-radius:999px;overflow:hidden}
+.progress > span{display:block;height:100%;background:var(--accent);width:0}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;
+  background:#eef0ed;font-size:.82rem;font-weight:800;color:#526068;
+}
+.question{padding:16px 0;border-top:1px solid #e5e1d8}
+.question:first-of-type{border-top:0;padding-top:4px}
+.prompt{font-weight:750;margin-bottom:10px}
+.options{display:grid;gap:8px}
+.option{
+  display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:white;
+  border:1px solid #d5dcda;border-radius:11px;font-weight:500;
+}
+.option input{margin-top:3px}
+.match-row{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;align-items:center;margin:9px 0}
+@media(max-width:560px){.match-row{grid-template-columns:1fr}}
+.order-list{display:grid;gap:8px}
+.order-item{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+  background:white;border:1px solid #d5dcda;border-radius:12px;padding:10px 12px
+}
+.order-buttons{display:flex;gap:6px}
+.order-buttons button{padding:7px 10px;border-radius:9px}
+.hidden{display:none !important}
+.result-score{
+  font-size:2.8rem;line-height:1;font-weight:900;letter-spacing:-.04em;margin:12px 0 4px
+}
+.good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+.review-grid{display:grid;gap:10px;margin-top:12px}
+.review{
+  background:white;border:1px solid #d9ddd9;border-radius:12px;padding:12px 14px;
+}
+.review strong{display:block}
+.model-badge{
+  display:inline-block;background:#223b46;color:white;border-radius:10px;
+  padding:6px 10px;font-weight:900;letter-spacing:.05em
+}
+hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+footer{font-size:.82rem;color:var(--muted);text-align:center;margin-top:24px}
+@media print{
+  body{background:white}
+  .no-print,.actions,.stepbar{display:none!important}
+  main{max-width:none;padding:0}
+  .hero,.card{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<main>
+  <section id="start" class="hero">
+    <div class="hero-head">
+      <img class="class-avatar" src="data:image/webp;base64,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" alt="Avatar de Educación Digital 3.º ESO">
+      <div>
+        <div class="eyebrow">Educación Digital · 3.º ESO · UD1</div>
+        <h1>Tarea 4 · Simulacro CA1.1</h1>
+        <p><strong>Arquitectura y funcionamiento de un equipo informático</strong></p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Objetivo:</strong> practicar antes del control del
+      <strong>viernes 2 de octubre</strong>. Cada identificador recibe automáticamente uno de cuatro modelos equivalentes.
+    </div>
+
+    <div class="grid two">
+      <div>
+        <h3>Condiciones</h3>
+        <p class="small">Trabajo individual · primer intento sin apuntes, buscadores ni IA · segundo intento con apuntes y un modelo diferente. Al terminar, haz una captura del resultado comparado y adjúntala en Teams.</p>
+      </div>
+      <div>
+        <h3>Privacidad</h3>
+        <p class="small">La actividad no guarda ni envía datos. Al recargar se pierde el intento. Usa solo tu identificador de clase, no tu nombre real.</p>
+      </div>
+    </div>
+
+    <hr>
+    <label for="studentId">ID del alumno o alumna</label>
+    <input id="studentId" type="text" maxlength="16" autocomplete="off" placeholder="Ej.: ACM13">
+    <p class="small">Introduce tu identificador de clase exactamente como aparece en Teams.</p>
+    <div class="actions">
+      <button id="startBtn">Comenzar simulacro</button>
+    </div>
+  </section>
+
+  <section id="exam" class="hidden">
+    <div class="card">
+      <div class="stepbar">
+        <span id="stepLabel" class="pill">Bloque 1 de 7</span>
+        <div class="progress"><span id="progressBar"></span></div>
+        <span id="modelBadge" class="model-badge">Modelo A</span>
+      </div>
+      <div id="blockHost"></div>
+      <div class="actions no-print">
+        <button id="prevBtn" class="secondary">Anterior</button>
+        <button id="nextBtn">Continuar</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="result" class="hidden">
+    <div class="hero">
+      <div class="eyebrow">Resultado del simulacro</div>
+      <h2 id="resultTitle">Modelo A</h2>
+      <div id="score" class="result-score">0 / 10</div>
+      <p id="scoreMessage"></p>
+
+      <div class="notice">
+        <strong>Importante:</strong> esta nota es orientativa. Sirve para detectar qué debes repasar antes del control.
+        El control real tendrá la misma clase de razonamiento, pero no reutilizará estas preguntas literalmente.
+      </div>
+
+      <h3>Diagnóstico por bloques</h3>
+      <div id="reviewGrid" class="review-grid"></div>
+
+      <hr>
+      <h3>Respuesta abierta de entrenamiento</h3>
+      <p class="small">No suma puntos: úsala para comprobar si puedes explicar el funcionamiento del equipo con tus propias palabras.</p>
+      <div id="finalResponse" class="review"></div>
+
+      <div id="comparisonBox" class="notice hidden"></div>
+
+      <div class="actions no-print">
+        <button id="secondAttemptBtn" class="ghost">Segundo intento con apuntes</button>
+        <button onclick="window.print()">Guardar copia en PDF (opcional)</button>
+        <button id="restartBtn" class="secondary">Nuevo alumno en este ordenador</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>Simulacro CA1.1 · Educación Digital 3.º ESO · Actividad de práctica</footer>
+</main>
+
+<script>
+const letters = ["A","B","C","D"];
+const allowedIds = new Set(["LFP13", "NAG13", "DLG9", "ACM13", "SRO22", "DBG8", "SPP11", "NRG51", "JCL11", "MGT7", "GGF12", "CBP9", "MC015", "MCR8", "JPG14", "ARP9", "DCA10", "CFG12", "SVS16", "AVL13", "ASU16", "AFC15", "ACV10", "NLP6", "FRPENA"]);
+const categoryNames = {
+  concepts:"Conceptos fundamentales",
+  functions:"Función de los componentes",
+  connections:"Conexiones",
+  diagnosis:"Diagnóstico",
+  compatibility:"Compatibilidad",
+  safety:"Manipulación segura",
+  system:"Funcionamiento conjunto"
+};
+
+function h32(str){
+  let h=2166136261>>>0;
+  for(let i=0;i<str.length;i++){
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h,16777619)>>>0;
+  }
+  return h>>>0;
+}
+function modelFromId(id){ return letters[h32(id.toUpperCase()) % 4]; }
+function secondModel(first){
+  const map={A:"C",B:"D",C:"A",D:"B"};
+  return map[first] || "C";
+}
+
+const commonOptions = {
+  types:["Hardware","Software","Firmware"],
+  connections:["Socket","Ranura DIMM","PCIe","M.2","SATA"],
+  components:["CPU","Memoria RAM","Almacenamiento","GPU","Fuente de alimentación","Sistema de refrigeración"]
+};
+
+const models = {
+A:{
+  q1:[
+    ["Memoria RAM","Hardware"],["Sistema operativo","Software"],["UEFI/BIOS","Firmware"],["SSD","Hardware"]
+  ],
+  q2:[
+    ["Realiza gran parte de las operaciones necesarias para ejecutar programas.","CPU"],
+    ["Mantiene temporalmente datos y programas que están en uso.","Memoria RAM"],
+    ["Conserva archivos aunque el equipo se apague.","Almacenamiento"],
+    ["Procesa especialmente la información gráfica.","GPU"],
+    ["Suministra energía eléctrica a los componentes.","Fuente de alimentación"],
+    ["Ayuda a evitar temperaturas excesivas.","Sistema de refrigeración"]
+  ],
+  q3:[
+    ["CPU","Socket"],["Memoria RAM","Ranura DIMM"],["Tarjeta gráfica dedicada","PCIe"],["SSD M.2","M.2"],["HDD/SSD SATA","SATA"]
+  ],
+  q4:{
+    intro:"Equipo de oficina: CPU suficiente, 4 GB de RAM DDR4, disco HDD de 500 GB, una ranura DDR4 libre y una ranura M.2 compatible con SSD NVMe. Se vuelve lento con muchas pestañas y tarda mucho en arrancar.",
+    items:[
+      ["¿Qué componente explica mejor la lentitud con muchas aplicaciones abiertas?",["CPU","Memoria RAM","GPU","Fuente de alimentación"],"Memoria RAM"],
+      ["¿Qué mejora influiría especialmente en el arranque y apertura de programas?",["Añadir un SSD M.2","Cambiar la GPU","Cambiar el teclado","Añadir ventiladores"],"Añadir un SSD M.2"],
+      ["¿Qué pareja de mejoras tiene más sentido para las necesidades descritas?",["8 GB DDR4 + SSD M.2","GPU potente + fuente 600 W","8 GB DDR3 + GPU","Solo cambiar la caja"],"8 GB DDR4 + SSD M.2"],
+      ["¿Qué afirmación es más correcta?",["Más almacenamiento siempre permite abrir más programas a la vez.","RAM y almacenamiento cumplen exactamente la misma función.","La RAM ayuda al trabajo simultáneo; el SSD mejora sobre todo acceso y carga.","Una GPU potente solucionaría ambos problemas por sí sola."],"La RAM ayuda al trabajo simultáneo; el SSD mejora sobre todo acceso y carga."]
+    ]
+  },
+  q5:{
+    intro:"La placa base del equipo utiliza memoria DDR4. Encuentras un módulo de 16 GB DDR3 muy barato.",
+    items:[
+      ["¿Por qué no deberías comprarlo?",["Porque 16 GB siempre son demasiados.","Porque el tipo DDR3 no es compatible con una placa que requiere DDR4.","Porque la RAM nunca se puede ampliar.","Porque DDR3 solo sirve para portátiles."],"Porque el tipo DDR3 no es compatible con una placa que requiere DDR4."],
+      ["¿Qué regla resume mejor la decisión?",["La capacidad es lo único importante.","Si encaja físicamente, siempre funcionará.","Antes de comprar hay que comprobar tipo, conexión y compatibilidad.","El componente más barato suele ser suficiente."],"Antes de comprar hay que comprobar tipo, conexión y compatibilidad."]
+    ]
+  },
+  q6:[
+    "Apagar correctamente el equipo.",
+    "Desconectar la alimentación eléctrica y los periféricos necesarios.",
+    "Descargarse de electricidad estática y preparar una zona de trabajo segura.",
+    "Abrir el equipo e instalar el componente sin forzar conectores.",
+    "Cerrar, reconectar y comprobar el funcionamiento."
+  ],
+  q7:{
+    intro:"Abres un programa que está instalado en el SSD y comienzas a trabajar con una imagen.",
+    items:[
+      ["¿Qué secuencia describe mejor lo que ocurre?",["El SSD procesa el programa y la CPU lo almacena.","El programa se carga desde el almacenamiento a la RAM y la CPU ejecuta instrucciones.","La RAM guarda el programa de forma permanente.","La fuente de alimentación interpreta las instrucciones."],"El programa se carga desde el almacenamiento a la RAM y la CPU ejecuta instrucciones."],
+      ["¿Qué función cumple la placa base en el conjunto?",["Conecta y permite la comunicación entre los principales componentes.","Sustituye a la CPU.","Guarda todos los archivos del usuario.","Solo sirve para sujetar físicamente las piezas."],"Conecta y permite la comunicación entre los principales componentes."],
+      ["¿Por qué la fuente es imprescindible aunque no procese datos?",["Porque suministra la energía necesaria al conjunto.","Porque almacena el sistema operativo.","Porque enfría directamente todos los componentes.","Porque convierte la RAM en almacenamiento."],"Porque suministra la energía necesaria al conjunto."],
+      ["¿Qué idea explica mejor que el ordenador sea un sistema?",["Un único componente realiza todas las tareas importantes.","Los componentes tienen funciones diferentes y coordinadas.","Cuantos más componentes haya, siempre será más rápido.","Todos los componentes pueden sustituirse entre sí."],"Los componentes tienen funciones diferentes y coordinadas."]
+    ]
+  }
+},
+B:{
+  q1:[
+    ["Tarjeta gráfica","Hardware"],["Navegador web","Software"],["UEFI","Firmware"],["Teclado","Hardware"]
+  ],
+  q2:[
+    ["Ejecuta instrucciones y coordina operaciones del sistema.","CPU"],
+    ["Guarda temporalmente información necesaria mientras trabajamos.","Memoria RAM"],
+    ["Mantiene documentos y programas a largo plazo.","Almacenamiento"],
+    ["Acelera el procesamiento de gráficos e imágenes.","GPU"],
+    ["Transforma y distribuye la energía para que el equipo funcione.","Fuente de alimentación"],
+    ["Disipa el calor generado por componentes como CPU o GPU.","Sistema de refrigeración"]
+  ],
+  q3:[
+    ["Tarjeta gráfica dedicada","PCIe"],["CPU","Socket"],["HDD SATA","SATA"],["Memoria RAM","Ranura DIMM"],["SSD M.2","M.2"]
+  ],
+  q4:{
+    intro:"Equipo para edición básica: CPU correcta, 8 GB de RAM, SSD, gráfica integrada y fuente de 300 W. Un alumno quiere instalar una GPU que recomienda una fuente mínima de 500 W.",
+    items:[
+      ["¿Qué debes comprobar antes de instalar esa GPU?",["Solo el color de la tarjeta.","Ranura compatible y requisitos de alimentación.","La capacidad del SSD.","El idioma del sistema operativo."],"Ranura compatible y requisitos de alimentación."],
+      ["¿Qué problema presenta la fuente actual?",["Tiene demasiada potencia.","Puede no cumplir la potencia requerida por la GPU.","No influye en una GPU.","Impide usar memoria RAM."],"Puede no cumplir la potencia requerida por la GPU."],
+      ["¿Qué decisión es técnicamente más razonable?",["Instalar la GPU sin comprobar nada.","Comprobar compatibilidad y sustituir la fuente si es necesario.","Quitar la RAM para compensar.","Cambiar el SSD por un HDD."],"Comprobar compatibilidad y sustituir la fuente si es necesario."],
+      ["¿Qué afirmación es correcta?",["Una pieza potente siempre mejora cualquier equipo.","La mejora debe responder a una necesidad y ser compatible con el conjunto.","La GPU sustituye a la CPU.","La fuente solo importa al encender el ordenador."],"La mejora debe responder a una necesidad y ser compatible con el conjunto."]
+    ]
+  },
+  q5:{
+    intro:"Un equipo dispone de una ranura M.2 compatible con SSD NVMe y también de puertos SATA. Debes añadir almacenamiento rápido sin retirar el disco existente.",
+    items:[
+      ["¿Qué opción encaja mejor con la información dada?",["SSD M.2 NVMe compatible","Módulo DDR4","GPU PCIe","CPU cualquiera"],"SSD M.2 NVMe compatible"],
+      ["¿Qué debes hacer antes de comprar?",["Comprobar que el modelo y la conexión son compatibles.","Elegir siempre el dispositivo de mayor capacidad.","Comprar el más caro.","Suponer que todos los M.2 son iguales."],"Comprobar que el modelo y la conexión son compatibles."]
+    ]
+  },
+  q6:[
+    "Apagar correctamente el equipo.",
+    "Desconectar alimentación y periféricos necesarios.",
+    "Preparar una zona segura y evitar descargas electrostáticas.",
+    "Abrir la caja e instalar la pieza en su conexión adecuada sin forzar.",
+    "Cerrar el equipo, reconectar y comprobar."
+  ],
+  q7:{
+    intro:"Durante una videollamada, el ordenador usa cámara, micrófono, CPU, RAM, almacenamiento y pantalla.",
+    items:[
+      ["¿Qué componente mantiene temporalmente datos que están siendo utilizados?",["RAM","SSD/HDD","Fuente","Caja"],"RAM"],
+      ["¿Qué componente ejecuta gran parte de las instrucciones del programa?",["CPU","Fuente","Ventilador","Monitor"],"CPU"],
+      ["¿Qué elemento facilita la conexión y comunicación interna entre componentes?",["Placa base","Ratón","Caja","Altavoces"],"Placa base"],
+      ["¿Qué conclusión es más correcta?",["Cada componente funciona de forma totalmente independiente.","El rendimiento depende de la cooperación entre componentes con funciones distintas.","La RAM puede sustituir al almacenamiento permanente.","La fuente procesa los datos de la videollamada."],"El rendimiento depende de la cooperación entre componentes con funciones distintas."]
+    ]
+  }
+},
+C:{
+  q1:[
+    ["Procesador","Hardware"],["Programa de edición de imagen","Software"],["BIOS","Firmware"],["Placa base","Hardware"]
+  ],
+  q2:[
+    ["Interpreta y ejecuta instrucciones de los programas.","CPU"],
+    ["Ofrece espacio temporal de trabajo para datos activos.","Memoria RAM"],
+    ["Guarda información de manera persistente.","Almacenamiento"],
+    ["Se especializa en operaciones gráficas.","GPU"],
+    ["Alimenta eléctricamente el sistema.","Fuente de alimentación"],
+    ["Mantiene temperaturas de funcionamiento adecuadas.","Sistema de refrigeración"]
+  ],
+  q3:[
+    ["SSD M.2","M.2"],["Memoria RAM","Ranura DIMM"],["CPU","Socket"],["SSD SATA","SATA"],["GPU dedicada","PCIe"]
+  ],
+  q4:{
+    intro:"Un ordenador funciona bien al arrancar, pero después de 15–20 minutos de uso intenso se ralentiza. El ventilador del procesador apenas gira y el disipador está lleno de polvo.",
+    items:[
+      ["¿Qué subsistema debes revisar primero?",["Refrigeración","Almacenamiento","Teclado","Audio"],"Refrigeración"],
+      ["¿Por qué puede reducirse el rendimiento?",["El exceso de temperatura puede afectar al funcionamiento del procesador.","El polvo aumenta la capacidad de la RAM.","La GPU deja de existir.","El SSD borra programas."],"El exceso de temperatura puede afectar al funcionamiento del procesador."],
+      ["¿Qué actuación es más razonable?",["Limpiar y comprobar el sistema de refrigeración con el equipo apagado y desconectado.","Abrirlo encendido y tocar el ventilador.","Comprar más almacenamiento sin revisar nada.","Instalar cualquier ventilador aunque no sea compatible."],"Limpiar y comprobar el sistema de refrigeración con el equipo apagado y desconectado."],
+      ["¿Qué idea general se aplica al caso?",["Un problema de rendimiento siempre se soluciona con más RAM.","El diagnóstico debe relacionar síntomas con la función de cada componente.","El componente más caro es siempre el culpable.","La refrigeración solo afecta a la caja."],"El diagnóstico debe relacionar síntomas con la función de cada componente."]
+    ]
+  },
+  q5:{
+    intro:"Quieres sustituir una CPU por otra aparentemente más rápida, pero utiliza un socket diferente al de la placa base.",
+    items:[
+      ["¿Cuál es el problema principal?",["La CPU no es compatible con el socket de la placa.","La CPU tiene demasiada memoria RAM.","Un procesador nunca se puede sustituir.","El socket solo afecta al almacenamiento."],"La CPU no es compatible con el socket de la placa."],
+      ["¿Qué demuestra este caso?",["Que basta comparar la velocidad.","Que la compatibilidad del conjunto es tan importante como las prestaciones.","Que todas las CPU usan el mismo conector.","Que la placa base no influye en la elección."],"Que la compatibilidad del conjunto es tan importante como las prestaciones."]
+    ]
+  },
+  q6:[
+    "Apagar el sistema de forma correcta.",
+    "Desenchufar el equipo y desconectar lo necesario.",
+    "Preparar el trabajo evitando electricidad estática.",
+    "Abrir e instalar o revisar el componente sin forzar piezas.",
+    "Cerrar, reconectar y verificar que todo funciona."
+  ],
+  q7:{
+    intro:"Guardas un documento, cierras el programa y apagas el equipo.",
+    items:[
+      ["¿Dónde debe quedar el documento para conservarse después de apagar?",["En el almacenamiento","Solo en la RAM","En la CPU","En el ventilador"],"En el almacenamiento"],
+      ["¿Qué ocurriría con datos que solo estuviesen en RAM?",["Se perderían al dejar de recibir alimentación.","Se convertirían en firmware.","Pasarían a la GPU automáticamente.","Quedarían guardados para siempre."],"Se perderían al dejar de recibir alimentación."],
+      ["¿Qué componente ejecutó las instrucciones necesarias mientras trabajabas?",["CPU","Fuente","Caja","Cable de red"],"CPU"],
+      ["¿Qué descripción integra mejor el proceso?",["RAM, CPU y almacenamiento cumplen funciones distintas y se coordinan.","El almacenamiento ejecuta todos los programas.","La CPU guarda permanentemente todos los archivos.","Todos los componentes realizan la misma función."],"RAM, CPU y almacenamiento cumplen funciones distintas y se coordinan."]
+    ]
+  }
+},
+D:{
+  q1:[
+    ["Ratón","Hardware"],["Aplicación de presentaciones","Software"],["BIOS/UEFI","Firmware"],["Fuente de alimentación","Hardware"]
+  ],
+  q2:[
+    ["Procesa instrucciones y cálculos.","CPU"],
+    ["Proporciona espacio temporal de trabajo mientras los programas están abiertos.","Memoria RAM"],
+    ["Conserva archivos y aplicaciones tras apagar el equipo.","Almacenamiento"],
+    ["Procesa y genera la salida gráfica.","GPU"],
+    ["Entrega energía a los distintos componentes.","Fuente de alimentación"],
+    ["Extrae o disipa calor para mantener temperaturas seguras.","Sistema de refrigeración"]
+  ],
+  q3:[
+    ["HDD","SATA"],["GPU dedicada","PCIe"],["Memoria RAM","Ranura DIMM"],["SSD M.2","M.2"],["CPU","Socket"]
+  ],
+  q4:{
+    intro:"Equipo de aula: 8 GB RAM, SSD de 128 GB casi lleno, CPU suficiente y gráfica integrada. Aparecen avisos de poco espacio y cuesta guardar nuevos archivos, aunque varias aplicaciones sencillas funcionan con normalidad.",
+    items:[
+      ["¿Qué componente está relacionado directamente con los avisos de poco espacio?",["Almacenamiento","RAM","GPU","Fuente"],"Almacenamiento"],
+      ["¿Qué dato apoya esa conclusión?",["El SSD de 128 GB está casi lleno.","La CPU es suficiente.","La gráfica es integrada.","Tiene 8 GB de RAM."],"El SSD de 128 GB está casi lleno."],
+      ["¿Qué mejora sería más coherente?",["Liberar espacio o ampliar el almacenamiento compatible.","Instalar una GPU potente.","Reducir la RAM.","Cambiar el teclado."],"Liberar espacio o ampliar el almacenamiento compatible."],
+      ["¿Qué afirmación es correcta?",["Tener más RAM equivale siempre a tener más espacio para archivos.","RAM y almacenamiento son recursos diferentes y resuelven problemas distintos.","La GPU almacena los documentos.","La fuente aumenta la capacidad del SSD."],"RAM y almacenamiento son recursos diferentes y resuelven problemas distintos."]
+    ]
+  },
+  q5:{
+    intro:"La placa base tiene una ranura de memoria libre y usa módulos DDR4. Tienes dos opciones: 8 GB DDR4 compatible o 16 GB DDR3.",
+    items:[
+      ["¿Cuál elegirías?",["8 GB DDR4 compatible","16 GB DDR3","Cualquiera: ambas sirven","Ninguna memoria puede ampliarse"],"8 GB DDR4 compatible"],
+      ["¿Cuál es la razón principal?",["La compatibilidad de tipo es necesaria aunque la otra opción tenga más capacidad.","Siempre hay que elegir menos capacidad.","DDR3 es almacenamiento.","La RAM no se conecta a la placa base."],"La compatibilidad de tipo es necesaria aunque la otra opción tenga más capacidad."]
+    ]
+  },
+  q6:[
+    "Apagar correctamente el ordenador.",
+    "Desconectar el cable de alimentación y lo necesario.",
+    "Preparar el área y prevenir descargas electrostáticas.",
+    "Abrir e instalar el componente en su ubicación correcta sin forzar.",
+    "Cerrar, reconectar y realizar una comprobación."
+  ],
+  q7:{
+    intro:"Enciendes el equipo y abres una aplicación que trabaja con imágenes guardadas en el SSD.",
+    items:[
+      ["¿Qué aporta el almacenamiento?",["Guarda la aplicación y los archivos de forma persistente.","Ejecuta todas las instrucciones.","Suministra electricidad.","Sustituye a la RAM."],"Guarda la aplicación y los archivos de forma persistente."],
+      ["¿Qué aporta la RAM durante el trabajo?",["Mantiene temporalmente datos e instrucciones en uso.","Guarda permanentemente todo.","Alimenta la placa.","Refrigera la CPU."],"Mantiene temporalmente datos e instrucciones en uso."],
+      ["¿Qué aporta la CPU?",["Ejecuta instrucciones y procesa operaciones.","Almacena archivos permanentemente.","Suministra corriente.","Conecta físicamente el monitor a la mesa."],"Ejecuta instrucciones y procesa operaciones."],
+      ["¿Qué afirmación resume mejor el conjunto?",["El ordenador funciona porque varios componentes especializados cooperan.","Solo la CPU determina todo el funcionamiento.","La RAM puede sustituir a cualquier componente.","Todos los componentes son intercambiables."],"El ordenador funciona porque varios componentes especializados cooperan."]
+    ]
+  }
+}
+};
+
+const weights = {q1:1, q2:1.5, q3:1.5, q4:2, q5:1, q6:1, q7:2};
+const cats = {q1:"concepts",q2:"functions",q3:"connections",q4:"diagnosis",q5:"compatibility",q6:"safety",q7:"system"};
+
+let state = {id:"",model:"A",step:0,answers:{},finalText:"",attempt:1,firstResult:null,firstModel:null};
+const totalSteps=7;
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
+function getModel(){return models[state.model]}
+function blockKey(){return "q"+(state.step+1)}
+
+function render(){
+  const key=blockKey(), m=getModel(), host=document.getElementById("blockHost");
+  document.getElementById("stepLabel").textContent=`Bloque ${state.step+1} de ${totalSteps}`;
+  document.getElementById("progressBar").style.width=`${((state.step+1)/totalSteps)*100}%`;
+  document.getElementById("modelBadge").textContent=`Modelo ${state.model} · Intento ${state.attempt}`;
+  document.getElementById("prevBtn").disabled=state.step===0;
+  document.getElementById("nextBtn").textContent=state.step===totalSteps-1 ? "Entregar simulacro" : "Continuar";
+
+  if(key==="q1") host.innerHTML=renderQ1(m.q1);
+  if(key==="q2") host.innerHTML=renderMatch("Bloque 2 · Función de los componentes","Relaciona cada función con el componente principal.",m.q2,commonOptions.components,key);
+  if(key==="q3") host.innerHTML=renderMatch("Bloque 3 · Conexiones","Relaciona cada componente con su conexión o ubicación principal.",m.q3,commonOptions.connections,key);
+  if(key==="q4") host.innerHTML=renderChoiceBlock("Bloque 4 · Diagnóstico de un equipo",m.q4,key);
+  if(key==="q5") host.innerHTML=renderChoiceBlock("Bloque 5 · Compatibilidad razonada",m.q5,key);
+  if(key==="q6") host.innerHTML=renderOrder(m.q6);
+  if(key==="q7") host.innerHTML=renderSystem(m.q7);
+  bindCurrent();
+}
+function val(name){return state.answers[name]??""}
+function renderQ1(items){
+  return `<h2>Bloque 1 · Conceptos fundamentales</h2>
+  <p>Clasifica cada elemento como <strong>hardware, software o firmware</strong>.</p>
+  ${items.map((it,i)=>`<div class="question"><div class="prompt">${esc(it[0])}</div>
+    <select data-save="q1_${i}"><option value="">Selecciona…</option>${commonOptions.types.map(o=>`<option ${val("q1_"+i)===o?"selected":""}>${o}</option>`).join("")}</select>
+  </div>`).join("")}`;
+}
+function renderMatch(title,desc,items,options,key){
+  return `<h2>${title}</h2><p>${desc}</p>
+  ${items.map((it,i)=>`<div class="match-row"><div class="prompt">${esc(it[0])}</div>
+    <select data-save="${key}_${i}"><option value="">Selecciona…</option>${options.map(o=>`<option ${val(key+"_"+i)===o?"selected":""}>${o}</option>`).join("")}</select></div>`).join("")}`;
+}
+function renderChoiceBlock(title,obj,key){
+  return `<h2>${title}</h2><div class="notice">${esc(obj.intro)}</div>
+  ${obj.items.map((it,i)=>`<div class="question"><div class="prompt">${i+1}. ${esc(it[0])}</div><div class="options">
+  ${it[1].map((o,j)=>`<label class="option"><input type="radio" name="${key}_${i}" value="${esc(o)}" ${val(key+"_"+i)===o?"checked":""}><span>${esc(o)}</span></label>`).join("")}
+  </div></div>`).join("")}`;
+}
+function renderOrder(correct){
+  const saved=state.answers.q6_order || [...correct].sort((a,b)=>h32(state.id+a)-h32(state.id+b));
+  state.answers.q6_order=saved;
+  return `<h2>Bloque 6 · Manipulación segura</h2>
+  <p>Ordena los pasos de una intervención básica sobre un componente. Usa los botones para subir o bajar cada paso.</p>
+  <div class="order-list">${saved.map((s,i)=>`<div class="order-item"><span>${esc(s)}</span><div class="order-buttons">
+  <button class="secondary" data-up="${i}" aria-label="Subir">↑</button><button class="secondary" data-down="${i}" aria-label="Bajar">↓</button></div></div>`).join("")}</div>`;
+}
+function renderSystem(obj){
+  return `<h2>Bloque 7 · Funcionamiento conjunto</h2><div class="notice">${esc(obj.intro)}</div>
+  ${obj.items.map((it,i)=>`<div class="question"><div class="prompt">${i+1}. ${esc(it[0])}</div><div class="options">
+  ${it[1].map(o=>`<label class="option"><input type="radio" name="q7_${i}" value="${esc(o)}" ${val("q7_"+i)===o?"checked":""}><span>${esc(o)}</span></label>`).join("")}
+  </div></div>`).join("")}
+  <div class="question"><div class="prompt">Entrenamiento escrito · En 3–5 líneas, explica por qué un ordenador no puede entenderse como “solo la CPU”. Relaciona al menos cuatro componentes.</div>
+  <textarea id="finalText" maxlength="700" placeholder="Escribe aquí tu explicación…">${esc(state.finalText)}</textarea>
+  <p class="small">Esta respuesta no suma puntos automáticamente, pero es muy importante para preparar el control escrito.</p></div>`;
+}
+function bindCurrent(){
+  document.querySelectorAll("[data-save]").forEach(el=>el.addEventListener("change",e=>state.answers[e.target.dataset.save]=e.target.value));
+  document.querySelectorAll("input[type=radio]").forEach(el=>el.addEventListener("change",e=>state.answers[e.target.name]=e.target.value));
+  const ft=document.getElementById("finalText"); if(ft) ft.addEventListener("input",e=>state.finalText=e.target.value);
+  document.querySelectorAll("[data-up]").forEach(b=>b.addEventListener("click",()=>{
+    let i=+b.dataset.up, a=state.answers.q6_order; if(i>0){[a[i-1],a[i]]=[a[i],a[i-1]];render();}
+  }));
+  document.querySelectorAll("[data-down]").forEach(b=>b.addEventListener("click",()=>{
+    let i=+b.dataset.down, a=state.answers.q6_order; if(i<a.length-1){[a[i+1],a[i]]=[a[i],a[i+1]];render();}
+  }));
+}
+function answeredCurrent(){
+  const key=blockKey(), m=getModel();
+  if(key==="q1") return m.q1.every((_,i)=>!!state.answers[`q1_${i}`]);
+  if(key==="q2") return m.q2.every((_,i)=>!!state.answers[`q2_${i}`]);
+  if(key==="q3") return m.q3.every((_,i)=>!!state.answers[`q3_${i}`]);
+  if(key==="q4") return m.q4.items.every((_,i)=>!!state.answers[`q4_${i}`]);
+  if(key==="q5") return m.q5.items.every((_,i)=>!!state.answers[`q5_${i}`]);
+  if(key==="q6") return !!state.answers.q6_order;
+  if(key==="q7") return m.q7.items.every((_,i)=>!!state.answers[`q7_${i}`]) && state.finalText.trim().length>=30;
+}
+function scoreArray(items,key){
+  let ok=0; items.forEach((it,i)=>{if(state.answers[`${key}_${i}`]===it[1])ok++;});
+  return {ok,total:items.length};
+}
+function scoreChoice(items,key){
+  let ok=0; items.forEach((it,i)=>{if(state.answers[`${key}_${i}`]===it[2])ok++;});
+  return {ok,total:items.length};
+}
+function calculate(){
+  const m=getModel(), detail={};
+  detail.q1=scoreArray(m.q1,"q1");
+  detail.q2=scoreArray(m.q2,"q2");
+  detail.q3=scoreArray(m.q3,"q3");
+  detail.q4=scoreChoice(m.q4.items,"q4");
+  detail.q5=scoreChoice(m.q5.items,"q5");
+  const order=state.answers.q6_order||[];
+  let pos=0;m.q6.forEach((s,i)=>{if(order[i]===s)pos++;}); detail.q6={ok:pos,total:m.q6.length};
+  detail.q7=scoreChoice(m.q7.items,"q7");
+
+  let total=0;
+  Object.keys(detail).forEach(k=>{ total += weights[k]*(detail[k].ok/detail[k].total); });
+  return {total:Math.round(total*100)/100,detail};
+}
+function showResult(){
+  const r=calculate();
+  document.getElementById("exam").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("resultTitle").textContent=`${state.id} · Modelo ${state.model} · Intento ${state.attempt}`;
+  const score=document.getElementById("score"); score.textContent=`${r.total.toFixed(2).replace(".",",")} / 10`;
+  score.className="result-score "+(r.total>=7?"good":r.total>=5?"warn":"bad");
+  document.getElementById("scoreMessage").textContent =
+    state.attempt===1
+      ? (r.total>=8 ? "Buen dominio. Revisa especialmente los bloques que no estén completos." :
+         r.total>=5 ? "Base suficiente. Ahora puedes hacer un segundo intento con apuntes para corregir errores y afianzar conceptos." :
+         "Necesitas repasar varios aprendizajes esenciales. El segundo intento con apuntes está pensado para ayudarte a corregirlos.")
+      : (r.total>=8 ? "Buen segundo intento. Comprueba si la mejora se debe a una comprensión más sólida y no solo a localizar respuestas." :
+         r.total>=5 ? "Has mejorado parte del contenido. Revisa todavía los bloques con errores antes del control." :
+         "El segundo intento indica que aún debes revisar los aprendizajes esenciales antes del control.");
+
+  const grid=document.getElementById("reviewGrid"); grid.innerHTML="";
+  Object.entries(r.detail).forEach(([k,d])=>{
+    const pct=d.ok/d.total, div=document.createElement("div"); div.className="review";
+    const label=categoryNames[cats[k]];
+    div.innerHTML=`<strong>${label}</strong><span class="${pct===1?"good":pct>=.6?"warn":"bad"}">${d.ok} de ${d.total} elementos correctos</span>`;
+    grid.appendChild(div);
+  });
+  document.getElementById("finalResponse").textContent=state.finalText.trim()||"Sin respuesta.";
+
+  const secondBtn=document.getElementById("secondAttemptBtn");
+  const comparison=document.getElementById("comparisonBox");
+  if(state.attempt===1){
+    state.firstResult=r;
+    state.firstModel=state.model;
+    secondBtn.classList.remove("hidden");
+    secondBtn.textContent="Segundo intento con apuntes";
+    comparison.classList.add("hidden");
+  }else{
+    secondBtn.classList.add("hidden");
+    const first=state.firstResult?.total ?? 0;
+    const diff=Math.round((r.total-first)*100)/100;
+    const sign=diff>0?"+":"";
+    comparison.classList.remove("hidden");
+    comparison.innerHTML=`<strong>Comparación de intentos</strong><br>
+      1.º intento sin apuntes: <strong>${first.toFixed(2).replace(".",",")} / 10</strong><br>
+      2.º intento con apuntes: <strong>${r.total.toFixed(2).replace(".",",")} / 10</strong><br>
+      Diferencia: <strong class="${diff>=0?"good":"bad"}">${sign}${diff.toFixed(2).replace(".",",")} puntos</strong><br>
+      <span class="small">La mejora es útil si ahora puedes explicar por qué las respuestas son correctas, no solo encontrarlas en los apuntes.</span><br><br>
+      <strong>Entrega en Teams:</strong> haz una captura de esta pantalla en la que se vean tu ID, las dos notas y la comparación. Adjunta esa captura a la Tarea 4 y pulsa <strong>Entregar</strong>.`;
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.getElementById("startBtn").addEventListener("click",()=>{
+  const id=document.getElementById("studentId").value.trim().toUpperCase();
+  if(!allowedIds.has(id)){
+    alert("ID no reconocido. Revisa tu identificador de clase.");
+    document.getElementById("studentId").focus();
+    return;
+  }
+  state={id,model:modelFromId(id),step:0,answers:{},finalText:"",attempt:1,firstResult:null,firstModel:null};
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  render(); window.scrollTo({top:0});
+});
+document.getElementById("prevBtn").addEventListener("click",()=>{if(state.step>0){state.step--;render();window.scrollTo({top:0,behavior:"smooth"});}});
+document.getElementById("nextBtn").addEventListener("click",()=>{
+  if(!answeredCurrent()){alert(state.step===6?"Completa todas las preguntas y escribe al menos 30 caracteres en la respuesta abierta.":"Completa todas las respuestas de este bloque antes de continuar.");return;}
+  if(state.step<totalSteps-1){state.step++;render();window.scrollTo({top:0,behavior:"smooth"});} else showResult();
+});
+document.getElementById("secondAttemptBtn").addEventListener("click",()=>{
+  const firstResult=state.firstResult;
+  const firstModel=state.firstModel || state.model;
+  state={
+    id:state.id,
+    model:secondModel(firstModel),
+    step:0,
+    answers:{},
+    finalText:"",
+    attempt:2,
+    firstResult:firstResult,
+    firstModel:firstModel
+  };
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  alert("Segundo intento: ahora sí puedes consultar tus apuntes. Recibirás un modelo diferente al primero.");
+  render();
+  window.scrollTo({top:0});
+});
+document.getElementById("restartBtn").addEventListener("click",()=>location.reload());
+</script>
+</body>
+</html>
