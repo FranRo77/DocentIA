@@ -3,238 +3,1842 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digitalización 4º ESO · Redes sociales y hábitos digitales</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-:root{--ink:#0f172a;--muted:#475569;--line:#cbd5e1;--panel:#fff;--page:#f1f5f9;--blue:#2563eb;--blue-dark:#1d4ed8;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 28rem),var(--page);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button{font:inherit}.shell{max-width:1480px;margin:0 auto;padding:18px}.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:20px 22px;background:rgba(255,255,255,.94);border:1px solid #dbe3ec;border-radius:22px;box-shadow:0 10px 30px rgba(15,23,42,.06);margin-bottom:16px}
-.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}h1{margin:0;font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.1;letter-spacing:-.02em}.subtitle{margin:.45rem 0 0;color:var(--muted);max-width:850px}
-.status{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;min-width:230px}.chip{display:inline-flex;align-items:center;min-height:34px;padding:6px 10px;border-radius:999px;background:#e2e8f0;color:#334155;font-size:.83rem;font-weight:800;white-space:nowrap}.chip.blue{background:#dbeafe;color:#1d4ed8}
-.main-grid{display:block;max-width:980px;margin:0 auto}.panel{background:var(--panel);border:1px solid #dbe3ec;border-radius:22px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
 
-.question-panel{overflow:hidden}.progress-head{padding:16px 18px 12px;border-bottom:1px solid #e2e8f0}.progress-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}.progress-label{font-weight:900}.progress-note{color:var(--muted);font-size:.88rem}.progress-track{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress-bar{width:0;height:100%;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .25s ease}
-.block-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.block-btn{min-height:44px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;color:#334155;font-weight:800;cursor:pointer;padding:8px}.block-btn:hover{border-color:#94a3b8;background:#f8fafc}.block-btn.active{border-color:#2563eb;background:#eff6ff;color:#1d4ed8}.block-btn.done{border-color:#86efac;background:#f0fdf4;color:#166534}
-.content{padding:18px}.block-header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:16px}.block-kicker{color:var(--blue);font-weight:900;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em}.block-title{margin:.25rem 0 .3rem;font-size:1.3rem;line-height:1.2}.time-pill{border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;font-weight:900;border-radius:999px;padding:7px 10px;white-space:nowrap;font-size:.86rem}
-.question{border:1px solid #dbe3ec;border-radius:16px;padding:15px;margin-top:12px;background:#fff}.question-title{font-weight:850;line-height:1.45;margin-bottom:12px}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:1px solid #cbd5e1;background:#f8fafc;border-radius:12px;padding:11px 12px;cursor:pointer;color:#1e293b;line-height:1.4;transition:.15s ease}.option:hover:not(:disabled){border-color:#94a3b8;background:#fff;transform:translateY(-1px)}.option:disabled{cursor:default;opacity:1}.option.correct{border-color:#22c55e;background:var(--green-bg);color:#166534}.option.incorrect{border-color:#ef4444;background:var(--red-bg);color:#991b1b}.letter{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#e2e8f0;flex:0 0 28px;font-weight:900;font-size:.85rem}.correct .letter{background:#bbf7d0;color:#166534}.incorrect .letter{background:#fecaca;color:#991b1b}
-.feedback{margin-top:10px;border-radius:12px;padding:11px 12px;font-size:.92rem;line-height:1.5}.feedback.good{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}.feedback.bad{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}
-.block-actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}.secondary,.primary,.summary-btn{min-height:44px;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer}.secondary{border:1px solid #cbd5e1;background:#fff;color:#334155}.secondary:disabled{opacity:.4;cursor:not-allowed}.primary{border:0;background:var(--blue);color:#fff}.primary:hover{background:var(--blue-dark)}.summary-btn{width:100%;margin-top:12px;border:0;background:#0f172a;color:#fff}.summary-btn:disabled{background:#94a3b8;cursor:not-allowed}
-.summary{display:none;padding:18px;border-top:1px solid #e2e8f0;background:#f8fafc}.summary.show{display:block}.score-card{border:1px solid #bfdbfe;background:#eff6ff;border-radius:18px;padding:18px;margin-bottom:14px}.score-number{font-size:3rem;line-height:1;font-weight:950;letter-spacing:-.05em;color:#1d4ed8;margin:.35rem 0}.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.metric{background:#fff;border:1px solid #dbe3ec;border-radius:14px;padding:12px}.metric strong{display:block;font-size:1.4rem;margin-top:2px}.review-list{display:grid;gap:8px;margin-top:12px}.review-item{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff;border:1px solid #dbe3ec;border-radius:12px;padding:10px 12px;font-size:.9rem}.review-item span:last-child{font-weight:900;white-space:nowrap}.reflection{margin-top:14px;border-left:4px solid #2563eb;background:#fff;border-radius:0 12px 12px 0;padding:12px 14px;color:#334155;line-height:1.55}.restart{margin-top:14px;border:1px solid #cbd5e1;background:#fff;color:#334155;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer}.footnote{margin-top:12px;color:#64748b;font-size:.8rem}
-@media(max-width:980px){.main-grid{grid-template-columns:1fr}.status{min-width:0;justify-content:flex-start}.topbar{flex-direction:column}}@media(max-width:640px){.shell{padding:10px}.topbar,.panel{border-radius:16px}.topbar{padding:16px}.content{padding:14px}.block-nav{grid-template-columns:repeat(2,1fr)}.block-header{flex-direction:column}.summary-grid{grid-template-columns:1fr}.review-item{align-items:flex-start;flex-direction:column}}
+<title>Digitalización 4.º ESO · ¿Somos adictos a las redes sociales?</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --ink:#0f172a;
+  --muted:#475569;
+  --line:#cbd5e1;
+  --panel:#ffffff;
+  --page:#f1f5f9;
+  --blue:#2563eb;
+  --blue-dark:#1d4ed8;
+  --green:#15803d;
+  --green-bg:#dcfce7;
+  --red:#b91c1c;
+  --red-bg:#fee2e2;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 28rem),
+    var(--page);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+.shell{
+  max-width:1480px;
+  margin:0 auto;
+  padding:18px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  padding:20px 22px;
+  background:rgba(255,255,255,.94);
+  border:1px solid #dbe3ec;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(15,23,42,.06);
+  margin-bottom:16px;
+}
+
+.eyebrow{
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:4px;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(1.55rem,3vw,2.25rem);
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+
+.subtitle{
+  margin:.45rem 0 0;
+  color:var(--muted);
+  max-width:850px;
+}
+
+.status{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  min-width:230px;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#e2e8f0;
+  color:#334155;
+  font-size:.83rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.chip.blue{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.panel{
+  background:var(--panel);
+  border:1px solid #dbe3ec;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(15,23,42,.06);
+}
+
+.login-panel{
+  max-width:680px;
+  margin:0 auto;
+  padding:28px;
+}
+
+.login-panel h2{
+  margin:.15rem 0 .5rem;
+  font-size:1.55rem;
+}
+
+.login-row{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.login-input{
+  flex:1;
+  min-width:0;
+  padding:12px 14px;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  font-size:1rem;
+  text-transform:uppercase;
+}
+
+.login-input:focus{
+  outline:3px solid rgba(37,99,235,.15);
+  border-color:#2563eb;
+}
+
+.login-error{
+  color:#b91c1c;
+  font-weight:700;
+  margin:10px 0 0;
+  min-height:24px;
+}
+
+.main-grid{
+  display:block;
+  max-width:980px;
+  margin:0 auto;
+}
+
+.question-panel{
+  overflow:hidden;
+}
+
+.progress-head{
+  padding:16px 18px 12px;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.progress-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:10px;
+}
+
+.progress-label{
+  font-weight:900;
+}
+
+.progress-note{
+  color:var(--muted);
+  font-size:.88rem;
+}
+
+.progress-track{
+  height:10px;
+  background:#e2e8f0;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,#2563eb,#3b82f6);
+  transition:width .25s ease;
+}
+
+.block-nav{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+
+.block-btn{
+  min-height:44px;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  background:#fff;
+  color:#334155;
+  font-weight:800;
+  cursor:pointer;
+  padding:8px;
+}
+
+.block-btn:hover:not(:disabled){
+  border-color:#94a3b8;
+  background:#f8fafc;
+}
+
+.block-btn.active{
+  border-color:#2563eb;
+  background:#eff6ff;
+  color:#1d4ed8;
+}
+
+.block-btn.done{
+  border-color:#86efac;
+  background:#f0fdf4;
+  color:#166534;
+}
+
+.content{
+  padding:18px;
+}
+
+.block-header{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+
+.block-kicker{
+  color:var(--blue);
+  font-weight:900;
+  font-size:.86rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.block-title{
+  margin:.25rem 0 .3rem;
+  font-size:1.3rem;
+  line-height:1.2;
+}
+
+.time-pill{
+  border:1px solid #bfdbfe;
+  background:#eff6ff;
+  color:#1d4ed8;
+  font-weight:900;
+  border-radius:999px;
+  padding:7px 10px;
+  white-space:nowrap;
+  font-size:.86rem;
+}
+
+.question{
+  border:1px solid #dbe3ec;
+  border-radius:16px;
+  padding:15px;
+  margin-top:12px;
+  background:#fff;
+}
+
+.question-title{
+  font-weight:850;
+  line-height:1.45;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  gap:8px;
+}
+
+.option{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  width:100%;
+  text-align:left;
+  border:1px solid #cbd5e1;
+  background:#f8fafc;
+  border-radius:12px;
+  padding:11px 12px;
+  cursor:pointer;
+  color:#1e293b;
+  line-height:1.4;
+  transition:.15s ease;
+}
+
+.option:hover:not(:disabled){
+  border-color:#94a3b8;
+  background:#fff;
+  transform:translateY(-1px);
+}
+
+.option:disabled{
+  cursor:default;
+  opacity:1;
+}
+
+.option.correct{
+  border-color:#22c55e;
+  background:var(--green-bg);
+  color:#166534;
+}
+
+.option.incorrect{
+  border-color:#ef4444;
+  background:var(--red-bg);
+  color:#991b1b;
+}
+
+.letter{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:#e2e8f0;
+  flex:0 0 28px;
+  font-weight:900;
+  font-size:.85rem;
+}
+
+.correct .letter{
+  background:#bbf7d0;
+  color:#166534;
+}
+
+.incorrect .letter{
+  background:#fecaca;
+  color:#991b1b;
+}
+
+.feedback{
+  margin-top:10px;
+  border-radius:12px;
+  padding:11px 12px;
+  font-size:.92rem;
+  line-height:1.5;
+}
+
+.feedback.good{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  color:#166534;
+}
+
+.feedback.bad{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+}
+
+.block-actions{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.secondary,
+.primary,
+.summary-btn,
+.restart{
+  min-height:44px;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.secondary{
+  border:1px solid #cbd5e1;
+  background:#fff;
+  color:#334155;
+}
+
+.secondary:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.primary{
+  border:0;
+  background:var(--blue);
+  color:#fff;
+}
+
+.primary:hover:not(:disabled){
+  background:var(--blue-dark);
+}
+
+.summary-btn{
+  width:100%;
+  margin-top:12px;
+  border:0;
+  background:#0f172a;
+  color:#fff;
+}
+
+.summary-btn:disabled{
+  background:#94a3b8;
+  cursor:not-allowed;
+}
+
+.summary{
+  display:none;
+  padding:18px;
+  border-top:1px solid #e2e8f0;
+  background:#f8fafc;
+}
+
+.summary.show{
+  display:block;
+}
+
+.score-card{
+  border:1px solid #bfdbfe;
+  background:#eff6ff;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:14px;
+}
+
+.student-result{
+  font-size:1rem;
+  font-weight:900;
+  color:#334155;
+  margin-top:6px;
+}
+
+.score-number{
+  font-size:3rem;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.05em;
+  color:#1d4ed8;
+  margin:.6rem 0;
+}
+
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+
+.metric{
+  background:#fff;
+  border:1px solid #dbe3ec;
+  border-radius:14px;
+  padding:12px;
+}
+
+.metric strong{
+  display:block;
+  font-size:1.4rem;
+  margin-top:2px;
+}
+
+.review-list{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+
+.review-item{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  background:#fff;
+  border:1px solid #dbe3ec;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:.9rem;
+}
+
+.review-item span:last-child{
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.reflection{
+  margin-top:14px;
+  border-left:4px solid #2563eb;
+  background:#fff;
+  border-radius:0 12px 12px 0;
+  padding:12px 14px;
+  color:#334155;
+  line-height:1.55;
+}
+
+.restart{
+  margin-top:14px;
+  border:1px solid #cbd5e1;
+  background:#fff;
+  color:#334155;
+}
+
+.footnote{
+  margin-top:12px;
+  color:#64748b;
+  font-size:.8rem;
+}
+
+@media(max-width:980px){
+  .status{
+    min-width:0;
+    justify-content:flex-start;
+  }
+
+  .topbar{
+    flex-direction:column;
+  }
+}
+
+@media(max-width:640px){
+  .shell{
+    padding:10px;
+  }
+
+  .topbar,
+  .panel{
+    border-radius:16px;
+  }
+
+  .topbar{
+    padding:16px;
+  }
+
+  .content{
+    padding:14px;
+  }
+
+  .block-nav{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .block-header{
+    flex-direction:column;
+  }
+
+  .summary-grid{
+    grid-template-columns:1fr;
+  }
+
+  .review-item{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .login-row{
+    flex-direction:column;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="shell">
+
 <header class="topbar">
+
 <div>
 <div class="eyebrow">Digitalización · 4.º ESO</div>
 <h1>¿Somos adictos a las redes sociales?</h1>
-<p class="subtitle">Cuestionario guiado por bloques: responde cuando el profesor pause el vídeo.</p>
+<p class="subtitle">
+Cuestionario guiado por bloques. Responde cuando el profesor pause el vídeo.
+</p>
 </div>
-<div class="status"><span class="chip blue" id="scoreChip">0 / 8 aciertos</span><span class="chip" id="answeredChip">0 / 8 respondidas</span></div>
+
+<div class="status" id="statusPanel" style="display:none;">
+<span class="chip blue" id="studentChip"></span>
+<span class="chip blue" id="scoreChip">0 / 8 aciertos</span>
+<span class="chip" id="answeredChip">0 / 8 respondidas</span>
+</div>
+
 </header>
 
-<main class="main-grid">
-<section class="panel question-panel">
-<div class="progress-head">
-<div class="progress-row">
-<div><div class="progress-label" id="progressLabel">Bloque 1 de 4</div><div class="progress-note" id="progressNote">2 preguntas</div></div>
-<span class="chip blue" id="blockScoreChip">0 / 2</span>
+
+<section id="loginPanel" class="panel login-panel">
+
+<div class="eyebrow">Acceso a la actividad</div>
+
+<h2>Introduce tu ID de clase</h2>
+
+<p class="subtitle">
+Escribe el mismo ID que utilizas en las actividades de Digitalización.
+</p>
+
+<div class="login-row">
+
+<input
+  id="studentId"
+  class="login-input"
+  type="text"
+  maxlength="16"
+  autocomplete="off"
+  autocapitalize="characters"
+  placeholder="Ej.: AFP9"
+>
+
+<button id="startBtn" type="button" class="primary">
+Entrar
+</button>
+
 </div>
-<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-<div class="block-nav" id="blockNav"></div>
-</div>
-<div class="content" id="content"></div>
-<div class="summary" id="summary"></div>
+
+<p id="loginError" class="login-error"></p>
+
 </section>
-</main>
+
+
+<main class="main-grid" id="app" style="display:none;">
+
+<section class="panel question-panel">
+
+<div class="progress-head">
+
+<div class="progress-row">
+
+<div>
+<div class="progress-label" id="progressLabel">
+Bloque 1 de 4
 </div>
+
+<div class="progress-note" id="progressNote">
+2 preguntas
+</div>
+</div>
+
+<span class="chip blue" id="blockScoreChip">
+0 / 2
+</span>
+
+</div>
+
+<div class="progress-track">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="block-nav" id="blockNav"></div>
+
+</div>
+
+<div class="content" id="content"></div>
+
+<div class="summary" id="summary"></div>
+
+</section>
+
+</main>
+
+</div>
+
 
 <script>
-const blocks=[
-{title:"Planteamiento y metodología",timeLabel:"00:00–05:00",startSeconds:0,questions:[
-{text:"¿Cuál es el objetivo principal del autor al usar la herramienta Google Trends en su análisis?",options:["Demostrar de forma melancólica que cualquier tiempo pasado fue mejor.","Aplicar una metodología objetiva basada en datos de búsqueda mundiales (2004-2024) para medir cambios en la popularidad de actividades.","Promover la prohibición total de los smartphones en adolescentes."],correct:1,feedback:"El ponente busca evitar análisis superficiales o nostálgicos «de bar» y utiliza Google Trends para analizar cuantitativamente los hábitos durante 20 años."},
-{text:"En las gráficas mostradas, ¿qué representa la fluctuación regular en forma de picos y valles en la búsqueda sobre «fútbol»?",options:["Errores técnicos en la recopilación de datos de Google.","Patrones estacionales vinculados al desarrollo de las ligas y periodos de vacaciones.","Un crecimiento continuo del interés por el baloncesto frente al fútbol."],correct:1,feedback:"El interés por el fútbol mantiene patrones estacionales estables vinculados al calendario deportivo oficial."}
-]},
-{title:"¿Qué ha pasado con nuestros hobbies?",timeLabel:"05:00–15:00",startSeconds:300,questions:[
-{text:"Según las tendencias registradas en las dos últimas décadas, ¿qué ha ocurrido con las búsquedas sobre música y lectura?",options:["Han aumentado de forma drástica gracias a las plataformas digitales.","Las búsquedas sobre música se han reducido a la cuarta parte y las de lectura se han reducido a la mitad.","Se han mantenido totalmente estables sin ningún cambio."],correct:1,feedback:"Los datos muestran una caída significativa en búsquedas de aficiones tradicionales como la música —dividida por 4— y la lectura —dividida por 2—."},
-{text:"¿A qué se debe el pico inusual de búsquedas en la categoría de «videojuegos» alrededor del año 2011?",options:["Al confinamiento por la pandemia del coronavirus.","Al lanzamiento y fenómeno global del videojuego Minecraft.","A la aparición repentina de la aplicación TikTok."],correct:1,feedback:"Si se descuenta el pico puntual de Minecraft en 2011, la tendencia general de búsquedas sobre videojuegos también muestra un descenso paulatino."}
-]},
-{title:"Sustitución del tiempo y diseño algorítmico",timeLabel:"15:00–25:00",startSeconds:900,questions:[
-{text:"¿Qué caracteriza a las redes sociales de última generación —TikTok, Reels, Shorts— frente a las primeras redes relacionales?",options:["Que están limitadas exclusivamente a la interacción entre amigos conocidos.","El uso de vídeos muy cortos y scroll infinito diseñados para generar estímulos y gratificación instantánea a corto plazo.","Que requieren pagar una suscripción mensual para crear una cuenta."],correct:1,feedback:"Las plataformas actuales están optimizadas algorítmicamente para maximizar la retención continua mediante bucles de recompensa rápida."},
-{text:"Según la definición de la RAE citada en el vídeo, ¿cuál es el requisito formal para definir una adicción?",options:["Pasar más de dos horas diarias delante de cualquier pantalla.","La dependencia de sustancias o actividades que resulten nocivas para la salud o el equilibrio psíquico.","Que la actividad requiera obligatoriamente el uso de internet."],correct:1,feedback:"La definición estricta exige la comprobación de un perjuicio o nocividad para la salud o el equilibrio mental."}
-]},
-{title:"Coste de oportunidad y regulación",timeLabel:"25:00–Final",startSeconds:1500,questions:[
-{text:"¿Por qué argumenta el ponente que la pérdida masiva de tiempo en redes sociales perjudica el progreso social?",options:["Porque daña físicamente el hardware de los ordenadores.","Porque reduce el tiempo de exploración libre y activa que permite el descubrimiento científico, técnico y artístico.","Porque impide el desarrollo del comercio electrónico."],correct:1,feedback:"El avance social se basa en la exploración creativa y el ensayo-error; reducir las horas de ocio activo por consumo pasivo genera un importante coste de oportunidad."},
-{text:"¿Cuál es la postura del autor respecto a la regulación del entorno digital en menores?",options:["Prohibir rotundamente los teléfonos móviles y los videojuegos.","Distinguir los usos positivos de los móviles y el efecto fatiga de los videojuegos, centrando el foco en regular el diseño de redes de scroll infinito.","Fomentar el consumo masivo de vídeo corto dentro del horario escolar."],correct:1,feedback:"Los videojuegos provocan fatiga y los móviles tienen usos funcionales positivos; el riesgo crítico reside en el diseño de plataformas infinitas sin mecanismos naturales de pausa."}
-]}
-];
 
-const letters=["A","B","C"];
-let currentBlock=0;
-let answers=Array(8).fill(null);
+/* =========================================================
+   ACCESO POR ID
+   ========================================================= */
 
-const content=document.getElementById("content");
-const blockNav=document.getElementById("blockNav");
-const progressBar=document.getElementById("progressBar");
-const progressLabel=document.getElementById("progressLabel");
-const progressNote=document.getElementById("progressNote");
-const scoreChip=document.getElementById("scoreChip");
-const answeredChip=document.getElementById("answeredChip");
-const blockScoreChip=document.getElementById("blockScoreChip");
-const summary=document.getElementById("summary");
+const allowedIds = new Set([
+  "AFP9",
+  "AMN19",
+  "APO9",
+  "ASG13",
+  "CSB12",
+  "CYA7",
+  "FPM14",
+  "GHA10",
+  "IFM10",
+  "ILP14",
+  "ISM14",
+  "JVK13",
+  "LRG11",
+  "MBT15",
+  "ME015",
+  "MGS11",
+  "MLM11",
+  "SMT10",
+  "SSC12",
+  "XLC13",
+  "FRPENA"
+]);
 
-function flatIndex(b,q){return b*2+q}
-function answeredCount(){return answers.filter(a=>a!==null).length}
-function correctCount(){return answers.filter(a=>a&&a.correct).length}
-function isBlockDone(b){return [0,1].every(q=>answers[flatIndex(b,q)]!==null)}
-function blockCorrect(b){return [0,1].filter(q=>answers[flatIndex(b,q)]?.correct).length}
+let currentStudentId = "";
 
-function renderNav(){
-  blockNav.innerHTML="";
-  blocks.forEach((block,index)=>{
-    const btn=document.createElement("button");
-    btn.type="button";
-    btn.className="block-btn"+(index===currentBlock?" active":"")+(isBlockDone(index)?" done":"");
-    btn.textContent=`Bloque ${index+1}`;
-    const unlocked = index === 0 || blocks.slice(0,index).every((_,i)=>isBlockDone(i));
-    btn.disabled = !unlocked;
-    if(!unlocked){ btn.style.opacity=".45"; btn.style.cursor="not-allowed"; }
-    btn.addEventListener("click",()=>{ if(unlocked){ currentBlock=index; render(); } });
-    blockNav.appendChild(btn);
-  });
-}
+const loginPanel = document.getElementById("loginPanel");
+const studentIdInput = document.getElementById("studentId");
+const startBtn = document.getElementById("startBtn");
+const loginError = document.getElementById("loginError");
+const app = document.getElementById("app");
+const statusPanel = document.getElementById("statusPanel");
+const studentChip = document.getElementById("studentChip");
 
-function answerQuestion(b,q,opt){
-  const idx=flatIndex(b,q);
-  if(answers[idx]!==null)return;
-  answers[idx]={selected:opt,correct:opt===blocks[b].questions[q].correct};
+
+/* =========================================================
+   PREGUNTAS
+   ========================================================= */
+
+const blocks = [
+
+{
+  title:"Planteamiento y metodología",
+  timeLabel:"00:00–05:00",
+
+  questions:[
+
+  {
+    text:"¿Cuál es el objetivo principal del autor al usar la herramienta Google Trends en su análisis?",
+
+    options:[
+      "Demostrar de forma melancólica que cualquier tiempo pasado fue mejor.",
+      "Aplicar una metodología objetiva basada en datos de búsqueda mundiales (2004-2024) para medir cambios en la popularidad de actividades.",
+      "Promover la prohibición total de los smartphones en adolescentes."
+    ],
+
+    correct:1,
+
+    feedback:
+    "El ponente busca evitar análisis superficiales o nostálgicos y utiliza Google Trends para analizar cuantitativamente los hábitos durante un periodo de 20 años."
+  },
+
+  {
+    text:"En las gráficas mostradas, ¿qué representa la fluctuación regular en forma de picos y valles en la búsqueda sobre «fútbol»?",
+
+    options:[
+      "Errores técnicos en la recopilación de datos de Google.",
+      "Patrones estacionales vinculados al desarrollo de las ligas y periodos de vacaciones.",
+      "Un crecimiento continuo del interés por el baloncesto frente al fútbol."
+    ],
+
+    correct:1,
+
+    feedback:
+    "El interés por el fútbol mantiene patrones estacionales vinculados al calendario deportivo."
+  }
+
+  ]
+},
+
+
+{
+  title:"¿Qué ha pasado con nuestros hobbies?",
+  timeLabel:"05:00–15:00",
+
+  questions:[
+
+  {
+    text:"Según las tendencias registradas en las dos últimas décadas, ¿qué ha ocurrido con las búsquedas sobre música y lectura?",
+
+    options:[
+      "Han aumentado de forma drástica gracias a las plataformas digitales.",
+      "Las búsquedas sobre música se han reducido a la cuarta parte y las de lectura se han reducido a la mitad.",
+      "Se han mantenido totalmente estables sin ningún cambio."
+    ],
+
+    correct:1,
+
+    feedback:
+    "Los datos mostrados indican una caída significativa en las búsquedas relacionadas con estas aficiones."
+  },
+
+  {
+    text:"¿A qué se debe el pico inusual de búsquedas en la categoría de «videojuegos» alrededor del año 2011?",
+
+    options:[
+      "Al confinamiento por la pandemia del coronavirus.",
+      "Al lanzamiento y fenómeno global del videojuego Minecraft.",
+      "A la aparición repentina de la aplicación TikTok."
+    ],
+
+    correct:1,
+
+    feedback:
+    "El pico está relacionado con el fenómeno de Minecraft. Al separarlo del resto de la serie puede observarse mejor la tendencia general."
+  }
+
+  ]
+},
+
+
+{
+  title:"Sustitución del tiempo y diseño algorítmico",
+  timeLabel:"15:00–25:00",
+
+  questions:[
+
+  {
+    text:"¿Qué caracteriza a las redes sociales de última generación —TikTok, Reels, Shorts— frente a las primeras redes relacionales?",
+
+    options:[
+      "Que están limitadas exclusivamente a la interacción entre amigos conocidos.",
+      "El uso de vídeos muy cortos y scroll infinito diseñados para generar estímulos y gratificación instantánea a corto plazo.",
+      "Que requieren pagar una suscripción mensual para crear una cuenta."
+    ],
+
+    correct:1,
+
+    feedback:
+    "El vídeo destaca el papel del contenido breve, la recomendación algorítmica y el desplazamiento continuo para mantener la atención del usuario."
+  },
+
+  {
+    text:"Según la definición de la RAE citada en el vídeo, ¿cuál es el requisito formal para definir una adicción?",
+
+    options:[
+      "Pasar más de dos horas diarias delante de cualquier pantalla.",
+      "La dependencia de sustancias o actividades que resulten nocivas para la salud o el equilibrio psíquico.",
+      "Que la actividad requiera obligatoriamente el uso de internet."
+    ],
+
+    correct:1,
+
+    feedback:
+    "La definición utilizada exige que exista dependencia y un efecto perjudicial sobre la salud o el equilibrio psíquico."
+  }
+
+  ]
+},
+
+
+{
+  title:"Coste de oportunidad y regulación",
+  timeLabel:"25:00–Final",
+
+  questions:[
+
+  {
+    text:"¿Por qué argumenta el ponente que la pérdida masiva de tiempo en redes sociales perjudica el progreso social?",
+
+    options:[
+      "Porque daña físicamente el hardware de los ordenadores.",
+      "Porque reduce el tiempo de exploración libre y activa que permite el descubrimiento científico, técnico y artístico.",
+      "Porque impide el desarrollo del comercio electrónico."
+    ],
+
+    correct:1,
+
+    feedback:
+    "El argumento se basa en el coste de oportunidad: el tiempo dedicado al consumo pasivo deja de emplearse en otras actividades de exploración, aprendizaje o creación."
+  },
+
+  {
+    text:"¿Cuál es la postura del autor respecto a la regulación del entorno digital en menores?",
+
+    options:[
+      "Prohibir rotundamente los teléfonos móviles y los videojuegos.",
+      "Distinguir los usos positivos de los móviles y el efecto fatiga de los videojuegos, centrando el foco en regular el diseño de redes de scroll infinito.",
+      "Fomentar el consumo masivo de vídeo corto dentro del horario escolar."
+    ],
+
+    correct:1,
+
+    feedback:
+    "El argumento diferencia entre tecnologías y usos. El foco se sitúa especialmente en determinadas características del diseño de las plataformas de consumo continuo."
+  }
+
+  ]
+};
+
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+const letters = ["A","B","C"];
+
+let currentBlock = 0;
+let answers = Array(8).fill(null);
+
+const content = document.getElementById("content");
+const blockNav = document.getElementById("blockNav");
+const progressBar = document.getElementById("progressBar");
+const progressLabel = document.getElementById("progressLabel");
+const progressNote = document.getElementById("progressNote");
+const scoreChip = document.getElementById("scoreChip");
+const answeredChip = document.getElementById("answeredChip");
+const blockScoreChip = document.getElementById("blockScoreChip");
+const summary = document.getElementById("summary");
+
+
+/* =========================================================
+   ACCESO
+   ========================================================= */
+
+function startActivity(){
+
+  const id = studentIdInput.value
+    .trim()
+    .toUpperCase();
+
+  if(!allowedIds.has(id)){
+
+    loginError.textContent =
+      "ID no válido. Comprueba que lo has escrito correctamente.";
+
+    return;
+  }
+
+  currentStudentId = id;
+
+  loginError.textContent = "";
+
+  loginPanel.style.display = "none";
+  app.style.display = "block";
+  statusPanel.style.display = "flex";
+
+  studentChip.textContent = `ID · ${currentStudentId}`;
+
   render();
 }
 
-function renderQuestion(b,q,question){
-  const idx=flatIndex(b,q),answer=answers[idx];
-  const wrapper=document.createElement("div");
-  wrapper.className="question";
-  const title=document.createElement("div");
-  title.className="question-title";
-  title.textContent=`${idx+1}. ${question.text}`;
+
+startBtn.addEventListener(
+  "click",
+  startActivity
+);
+
+
+studentIdInput.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Enter"){
+      startActivity();
+    }
+
+  }
+);
+
+
+/* =========================================================
+   FUNCIONES
+   ========================================================= */
+
+function flatIndex(block,question){
+  return block * 2 + question;
+}
+
+
+function answeredCount(){
+
+  return answers.filter(
+    answer => answer !== null
+  ).length;
+
+}
+
+
+function correctCount(){
+
+  return answers.filter(
+    answer => answer && answer.correct
+  ).length;
+
+}
+
+
+function isBlockDone(block){
+
+  return [0,1].every(
+    question =>
+      answers[
+        flatIndex(block,question)
+      ] !== null
+  );
+
+}
+
+
+function blockCorrect(block){
+
+  return [0,1].filter(
+    question =>
+      answers[
+        flatIndex(block,question)
+      ]?.correct
+  ).length;
+
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+
+function renderNav(){
+
+  blockNav.innerHTML = "";
+
+  blocks.forEach(
+    (block,index) => {
+
+      const button =
+        document.createElement("button");
+
+      button.type = "button";
+
+      button.className =
+        "block-btn" +
+        (index === currentBlock ? " active" : "") +
+        (isBlockDone(index) ? " done" : "");
+
+      button.textContent =
+        `Bloque ${index + 1}`;
+
+
+      const unlocked =
+        index === 0 ||
+        blocks
+          .slice(0,index)
+          .every(
+            (_,i) => isBlockDone(i)
+          );
+
+
+      button.disabled = !unlocked;
+
+
+      if(!unlocked){
+
+        button.style.opacity = ".45";
+        button.style.cursor = "not-allowed";
+
+      }
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          if(unlocked){
+
+            currentBlock = index;
+            render();
+
+          }
+
+        }
+      );
+
+
+      blockNav.appendChild(button);
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   RESPUESTAS
+   ========================================================= */
+
+function answerQuestion(
+  block,
+  question,
+  option
+){
+
+  const index =
+    flatIndex(block,question);
+
+
+  if(answers[index] !== null){
+    return;
+  }
+
+
+  answers[index] = {
+
+    selected:option,
+
+    correct:
+      option ===
+      blocks[block]
+        .questions[question]
+        .correct
+
+  };
+
+
+  render();
+
+}
+
+
+/* =========================================================
+   PREGUNTA
+   ========================================================= */
+
+function renderQuestion(
+  block,
+  questionIndex,
+  question
+){
+
+  const index =
+    flatIndex(
+      block,
+      questionIndex
+    );
+
+
+  const answer =
+    answers[index];
+
+
+  const wrapper =
+    document.createElement("div");
+
+  wrapper.className =
+    "question";
+
+
+  const title =
+    document.createElement("div");
+
+  title.className =
+    "question-title";
+
+  title.textContent =
+    `${index + 1}. ${question.text}`;
+
+
   wrapper.appendChild(title);
 
-  const options=document.createElement("div");
-  options.className="options";
 
-  question.options.forEach((text,opt)=>{
-    const btn=document.createElement("button");
-    btn.type="button";
-    btn.className="option";
-    if(answer){
-      btn.disabled=true;
-      if(opt===question.correct)btn.classList.add("correct");
-      if(opt===answer.selected&&!answer.correct)btn.classList.add("incorrect");
+  const options =
+    document.createElement("div");
+
+  options.className =
+    "options";
+
+
+  question.options.forEach(
+    (text,optionIndex) => {
+
+      const button =
+        document.createElement("button");
+
+
+      button.type = "button";
+
+      button.className =
+        "option";
+
+
+      if(answer){
+
+        button.disabled = true;
+
+
+        if(
+          optionIndex ===
+          question.correct
+        ){
+
+          button.classList.add(
+            "correct"
+          );
+
+        }
+
+
+        if(
+          optionIndex ===
+          answer.selected &&
+          !answer.correct
+        ){
+
+          button.classList.add(
+            "incorrect"
+          );
+
+        }
+
+      }
+
+
+      button.innerHTML =
+        `<span class="letter">
+          ${letters[optionIndex]}
+        </span>
+        <span>${text}</span>`;
+
+
+      button.addEventListener(
+        "click",
+        () =>
+          answerQuestion(
+            block,
+            questionIndex,
+            optionIndex
+          )
+      );
+
+
+      options.appendChild(button);
+
     }
-    btn.innerHTML=`<span class="letter">${letters[opt]}</span><span>${text}</span>`;
-    btn.addEventListener("click",()=>answerQuestion(b,q,opt));
-    options.appendChild(btn);
-  });
+  );
+
+
   wrapper.appendChild(options);
 
+
   if(answer){
-    const fb=document.createElement("div");
-    fb.className=`feedback ${answer.correct?"good":"bad"}`;
-    fb.innerHTML=`<strong>${answer.correct?"Correcto.":"Incorrecto."}</strong> ${question.feedback}`;
-    wrapper.appendChild(fb);
+
+    const feedback =
+      document.createElement("div");
+
+
+    feedback.className =
+      `feedback ${
+        answer.correct
+          ? "good"
+          : "bad"
+      }`;
+
+
+    feedback.innerHTML =
+      `<strong>${
+        answer.correct
+          ? "Correcto."
+          : "Incorrecto."
+      }</strong>
+      ${question.feedback}`;
+
+
+    wrapper.appendChild(feedback);
+
   }
+
+
   return wrapper;
+
 }
+
+
+/* =========================================================
+   ESTADO SUPERIOR
+   ========================================================= */
 
 function updateStatus(){
-  const a=answeredCount(),c=correctCount();
-  scoreChip.textContent=`${c} / 8 aciertos`;
-  answeredChip.textContent=`${a} / 8 respondidas`;
-  progressBar.style.width=`${a/8*100}%`;
+
+  const answered =
+    answeredCount();
+
+  const correct =
+    correctCount();
+
+
+  scoreChip.textContent =
+    `${correct} / 8 aciertos`;
+
+
+  answeredChip.textContent =
+    `${answered} / 8 respondidas`;
+
+
+  progressBar.style.width =
+    `${answered / 8 * 100}%`;
+
 }
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
 
 function render(){
-  const block=blocks[currentBlock];
-  progressLabel.textContent=`Bloque ${currentBlock+1} de 4`;
-  progressNote.textContent=block.title;
-  blockScoreChip.textContent=`${blockCorrect(currentBlock)} / 2`;
-  renderNav();updateStatus();
-  content.innerHTML="";
 
-  const header=document.createElement("div");
-  header.className="block-header";
-  header.innerHTML=`<div><div class="block-kicker">Bloque ${currentBlock+1}</div><h2 class="block-title">${block.title}</h2><p class="progress-note">Responde cuando el profesor pause el vídeo.</p></div><div class="time-pill">${block.timeLabel}</div>`;
+  const block =
+    blocks[currentBlock];
+
+
+  progressLabel.textContent =
+    `Bloque ${currentBlock + 1} de 4`;
+
+
+  progressNote.textContent =
+    block.title;
+
+
+  blockScoreChip.textContent =
+    `${blockCorrect(currentBlock)} / 2`;
+
+
+  renderNav();
+  updateStatus();
+
+
+  content.innerHTML = "";
+
+
+  const header =
+    document.createElement("div");
+
+  header.className =
+    "block-header";
+
+
+  header.innerHTML = `
+    <div>
+
+      <div class="block-kicker">
+        Bloque ${currentBlock + 1}
+      </div>
+
+      <h2 class="block-title">
+        ${block.title}
+      </h2>
+
+      <p class="progress-note">
+        Responde cuando el profesor pause el vídeo.
+      </p>
+
+    </div>
+
+    <div class="time-pill">
+      ${block.timeLabel}
+    </div>
+  `;
+
+
   content.appendChild(header);
 
-  block.questions.forEach((q,i)=>content.appendChild(renderQuestion(currentBlock,i,q)));
 
-  const actions=document.createElement("div");
-  actions.className="block-actions";
+  block.questions.forEach(
+    (question,index) => {
 
-  const prev=document.createElement("button");
-  prev.type="button";prev.className="secondary";prev.textContent="← Bloque anterior";prev.disabled=currentBlock===0;
-  prev.addEventListener("click",()=>{if(currentBlock>0){currentBlock--;render()}});
+      content.appendChild(
+        renderQuestion(
+          currentBlock,
+          index,
+          question
+        )
+      );
 
-  const next=document.createElement("button");
-  next.type="button";next.className="primary";next.textContent=currentBlock===3?"Revisar progreso":"Siguiente bloque →";
-  next.disabled = !isBlockDone(currentBlock);
-  if(next.disabled){ next.style.opacity=".45"; next.style.cursor="not-allowed"; }
-  next.addEventListener("click",()=>{if(!isBlockDone(currentBlock))return;if(currentBlock<3){currentBlock++;render()}else window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"})});
+    }
+  );
 
-  actions.append(prev,next);
-  content.appendChild(actions);
 
-  const summaryBtn=document.createElement("button");
-  summaryBtn.type="button";summaryBtn.className="summary-btn";
-  summaryBtn.disabled=answeredCount()!==8;
-  summaryBtn.textContent=answeredCount()===8?"Ver resumen de calificación":`Completa las ${8-answeredCount()} pregunta${8-answeredCount()===1?"":"s"} restante${8-answeredCount()===1?"":"s"}`;
-  summaryBtn.addEventListener("click",showSummary);
-  content.appendChild(summaryBtn);
+  const actions =
+    document.createElement("div");
 
-  const foot=document.createElement("p");
-  foot.className="footnote";
-  foot.textContent="La actividad no guarda ni envía respuestas. Si recargas la página, se reiniciará el cuestionario.";
-  content.appendChild(foot);
+  actions.className =
+    "block-actions";
+
+
+  const previous =
+    document.createElement("button");
+
+  previous.type =
+    "button";
+
+  previous.className =
+    "secondary";
+
+  previous.textContent =
+    "← Bloque anterior";
+
+  previous.disabled =
+    currentBlock === 0;
+
+
+  previous.addEventListener(
+    "click",
+    () => {
+
+      if(currentBlock > 0){
+
+        currentBlock--;
+
+        render();
+
+      }
+
+    }
+  );
+
+
+  const next =
+    document.createElement("button");
+
+  next.type =
+    "button";
+
+  next.className =
+    "primary";
+
+
+  next.textContent =
+    currentBlock === 3
+      ? "Revisar progreso"
+      : "Siguiente bloque →";
+
+
+  next.disabled =
+    !isBlockDone(currentBlock);
+
+
+  if(next.disabled){
+
+    next.style.opacity = ".45";
+    next.style.cursor = "not-allowed";
+
+  }
+
+
+  next.addEventListener(
+    "click",
+    () => {
+
+      if(
+        !isBlockDone(currentBlock)
+      ){
+        return;
+      }
+
+
+      if(currentBlock < 3){
+
+        currentBlock++;
+
+        render();
+
+      }else{
+
+        window.scrollTo({
+          top:
+            document.body.scrollHeight,
+          behavior:"smooth"
+        });
+
+      }
+
+    }
+  );
+
+
+  actions.append(
+    previous,
+    next
+  );
+
+
+  content.appendChild(
+    actions
+  );
+
+
+  const summaryButton =
+    document.createElement("button");
+
+
+  summaryButton.type =
+    "button";
+
+  summaryButton.className =
+    "summary-btn";
+
+
+  summaryButton.disabled =
+    answeredCount() !== 8;
+
+
+  const remaining =
+    8 - answeredCount();
+
+
+  summaryButton.textContent =
+    answeredCount() === 8
+
+    ? "Ver resumen de calificación"
+
+    : `Completa las ${remaining} pregunta${
+        remaining === 1 ? "" : "s"
+      } restante${
+        remaining === 1 ? "" : "s"
+      }`;
+
+
+  summaryButton.addEventListener(
+    "click",
+    showSummary
+  );
+
+
+  content.appendChild(
+    summaryButton
+  );
+
+
+  const foot =
+    document.createElement("p");
+
+
+  foot.className =
+    "footnote";
+
+
+  foot.textContent =
+    "La actividad no guarda ni envía tus respuestas. Si recargas la página, tendrás que comenzar de nuevo.";
+
+
+  content.appendChild(
+    foot
+  );
+
 }
+
+
+/* =========================================================
+   MENSAJE FINAL
+   ========================================================= */
 
 function scoreMessage(score){
-  if(score>=8.75)return"Has identificado con mucha precisión las ideas principales del vídeo. Antes de cerrar, piensa qué parte del argumento te parece más convincente y cuál necesitaría más datos para aceptarla completamente.";
-  if(score>=6.25)return"Comprendes buena parte del argumento general. Revisa los bloques en los que has fallado y distingue siempre entre los datos mostrados, la interpretación del ponente y tus propias conclusiones.";
-  if(score>=5)return"Has captado algunas ideas esenciales, pero todavía mezclas varios argumentos del vídeo. Vuelve a los tramos indicados y comprueba qué datos utiliza el ponente para apoyar cada conclusión.";
-  return"Necesitas revisar el vídeo con más atención. No memorices únicamente respuestas: identifica qué datos se muestran, qué interpreta el ponente y cómo relaciona esos datos con el uso actual de las redes sociales.";
+
+  if(score >= 8.75){
+
+    return "Has identificado con mucha precisión las ideas principales del vídeo. Piensa ahora qué parte del argumento te parece más convincente y cuál necesitaría más datos para aceptarla completamente.";
+
+  }
+
+
+  if(score >= 6.25){
+
+    return "Comprendes buena parte del argumento general. Revisa los bloques en los que has fallado y distingue entre los datos mostrados, la interpretación del ponente y las conclusiones.";
+
+  }
+
+
+  if(score >= 5){
+
+    return "Has captado algunas ideas esenciales, pero todavía mezclas varios argumentos del vídeo. Revisa qué datos utiliza el ponente para apoyar cada conclusión.";
+
+  }
+
+
+  return "Necesitas revisar el vídeo con más atención. Identifica qué datos aparecen, cómo los interpreta el ponente y de qué manera los relaciona con el uso actual de las redes sociales.";
+
 }
+
+
+/* =========================================================
+   RESUMEN FINAL
+   ========================================================= */
 
 function showSummary(){
-  if(answeredCount()!==8)return;
-  const correct=correctCount(),incorrect=8-correct,score=Math.round(correct/8*1000)/100;
-  summary.innerHTML=`<div class="score-card"><div class="eyebrow">Resumen de calificación</div><div class="score-number">${score.toFixed(2).replace(".",",")} / 10</div><div>${correct} respuestas correctas de 8.</div><div class="summary-grid"><div class="metric"><span>Aciertos</span><strong>${correct}</strong></div><div class="metric"><span>Errores</span><strong>${incorrect}</strong></div></div></div><h3 class="text-lg font-black text-slate-900">Desglose por bloques</h3>`;
-  const review=document.createElement("div");
-  review.className="review-list";
-  blocks.forEach((block,index)=>{
-    const item=document.createElement("div");
-    item.className="review-item";
-    item.innerHTML=`<span><strong>Bloque ${index+1}</strong> · ${block.title}</span><span>${blockCorrect(index)} / 2</span>`;
-    review.appendChild(item);
+
+  if(
+    answeredCount() !== 8
+  ){
+    return;
+  }
+
+
+  const correct =
+    correctCount();
+
+
+  const incorrect =
+    8 - correct;
+
+
+  const score =
+    Math.round(
+      correct / 8 * 1000
+    ) / 100;
+
+
+  summary.innerHTML = `
+
+    <div class="score-card">
+
+      <div class="eyebrow">
+        Resumen de calificación
+      </div>
+
+      <div class="student-result">
+        ID · ${currentStudentId}
+      </div>
+
+      <div class="score-number">
+        ${score
+          .toFixed(2)
+          .replace(".",",")} / 10
+      </div>
+
+      <div>
+        ${correct} respuestas correctas de 8.
+      </div>
+
+      <div class="summary-grid">
+
+        <div class="metric">
+          <span>Aciertos</span>
+          <strong>${correct}</strong>
+        </div>
+
+        <div class="metric">
+          <span>Errores</span>
+          <strong>${incorrect}</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <h3 class="text-lg font-black text-slate-900">
+      Desglose por bloques
+    </h3>
+
+  `;
+
+
+  const review =
+    document.createElement("div");
+
+
+  review.className =
+    "review-list";
+
+
+  blocks.forEach(
+    (block,index) => {
+
+      const item =
+        document.createElement("div");
+
+
+      item.className =
+        "review-item";
+
+
+      item.innerHTML = `
+        <span>
+          <strong>
+            Bloque ${index + 1}
+          </strong>
+          · ${block.title}
+        </span>
+
+        <span>
+          ${blockCorrect(index)} / 2
+        </span>
+      `;
+
+
+      review.appendChild(
+        item
+      );
+
+    }
+  );
+
+
+  summary.appendChild(
+    review
+  );
+
+
+  const reflection =
+    document.createElement("div");
+
+
+  reflection.className =
+    "reflection";
+
+
+  reflection.innerHTML =
+    `<strong>Para terminar:</strong>
+    ${scoreMessage(score)}`;
+
+
+  summary.appendChild(
+    reflection
+  );
+
+
+  const restart =
+    document.createElement("button");
+
+
+  restart.type =
+    "button";
+
+  restart.className =
+    "restart";
+
+  restart.textContent =
+    "Reiniciar actividad";
+
+
+  restart.addEventListener(
+    "click",
+    () => {
+
+      answers =
+        Array(8).fill(null);
+
+      currentBlock = 0;
+
+      summary.classList.remove(
+        "show"
+      );
+
+      summary.innerHTML = "";
+
+      render();
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    }
+  );
+
+
+  summary.appendChild(
+    restart
+  );
+
+
+  const newStudent =
+    document.createElement("button");
+
+
+  newStudent.type =
+    "button";
+
+  newStudent.className =
+    "restart";
+
+  newStudent.style.marginLeft =
+    "8px";
+
+  newStudent.textContent =
+    "Cambiar alumno";
+
+
+  newStudent.addEventListener(
+    "click",
+    () => {
+
+      answers =
+        Array(8).fill(null);
+
+      currentBlock = 0;
+
+      currentStudentId = "";
+
+      studentIdInput.value = "";
+
+      summary.classList.remove(
+        "show"
+      );
+
+      summary.innerHTML = "";
+
+      app.style.display =
+        "none";
+
+      statusPanel.style.display =
+        "none";
+
+      loginPanel.style.display =
+        "block";
+
+      studentIdInput.focus();
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    }
+  );
+
+
+  summary.appendChild(
+    newStudent
+  );
+
+
+  summary.classList.add(
+    "show"
+  );
+
+
+  summary.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
   });
-  summary.appendChild(review);
 
-  const reflection=document.createElement("div");
-  reflection.className="reflection";
-  reflection.innerHTML=`<strong>Para terminar:</strong> ${scoreMessage(score)}`;
-  summary.appendChild(reflection);
-
-  const restart=document.createElement("button");
-  restart.type="button";restart.className="restart";restart.textContent="Reiniciar actividad";
-  restart.addEventListener("click",()=>{answers=Array(8).fill(null);currentBlock=0;summary.classList.remove("show");summary.innerHTML="";render();window.scrollTo({top:0,behavior:"smooth"})});
-  summary.appendChild(restart);
-
-  summary.classList.add("show");
-  summary.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-render();
+
+/* =========================================================
+   INICIO
+   ========================================================= */
+
+studentIdInput.focus();
+
 </script>
+
 </body>
 </html>
