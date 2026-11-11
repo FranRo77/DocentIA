@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <title>Tectónica en imaxes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#actividade">Ir á actividade</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">Bioloxía e Xeoloxía · 4.º ESO</p>
+      <h1>Tectónica en imaxes</h1>
+      <p class="lead">Interpreta paisaxes, fotografías aéreas e imaxes de satélite. Relaciona cada caso coa dinámica das placas e identifica estruturas de deformación.</p>
+    </div>
+  </header>
+
+  <main id="actividade">
+    <section class="panel intro" aria-labelledby="instrucions">
+      <div>
+        <h2 id="instrucions">Instrucións</h2>
+        <ul>
+          <li>Actividade individual. Tempo orientativo: 45–55 minutos.</li>
+          <li>Observa cada imaxe antes de responder. A localización tamén forma parte da información dispoñible.</li>
+          <li>Na galería final, xustifica a clasificación mediante un trazo visible: curvatura, desprazamento ou fractura sen desprazamento.</li>
+          <li>Ao rematar, descarga o ficheiro e entrégao na tarefa de Teams. Non envíes capturas de pantalla.</li>
+        </ul>
+      </div>
+      <div class="student-fields">
+        <label>Nome e apelidos
+          <input id="studentName" autocomplete="name" placeholder="Nome e apelidos">
+        </label>
+        <label>Grupo
+          <input id="studentGroup" placeholder="4.º ESO …">
+        </label>
+      </div>
+    </section>
+
+    <div class="progress-wrap" aria-live="polite">
+      <div class="progress-meta"><span>Progreso</span><strong id="progressText">0 %</strong></div>
+      <div class="progress-track"><span id="progressBar"></span></div>
+    </div>
+
+    <section aria-labelledby="parte1">
+      <div class="section-heading">
+        <p class="section-number">Parte 1 · 4 puntos</p>
+        <h2 id="parte1">Que proceso está sucedendo?</h2>
+        <p>Interpreta primeiro o modelo xeolóxico e contrástao despois coa imaxe real. Selecciona o contexto tectónico e o proceso máis coherente.</p>
+      </div>
+      <div id="tectonicCases" class="case-grid"></div>
+
+      <article class="panel synthesis">
+        <h3>Explicación dun caso</h3>
+        <div class="two-columns">
+          <label>Escolle un caso
+            <select id="synthesisCase">
+              <option value="">Selecciona…</option>
+              <option value="1">Caso 1</option>
+              <option value="2">Caso 2</option>
+              <option value="3">Caso 3</option>
+              <option value="4">Caso 4</option>
+              <option value="5">Caso 5</option>
+              <option value="6">Caso 6</option>
+            </select>
+          </label>
+          <label class="wide">Explica como o movemento das placas, ou a dinámica intraplaca, produce o relevo ou fenómeno visible.
+            <textarea id="synthesisText" rows="4" placeholder="Relaciona movemento, proceso e efecto observable."></textarea>
+          </label>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="parte2">
+      <div class="section-heading">
+        <p class="section-number">Parte 2 · 6 puntos</p>
+        <h2 id="parte2">Pregamento, falla ou diáclase?</h2>
+        <p>Clasifica cada fotografía e xustifica a decisión usando só o que se pode observar con claridade.</p>
+      </div>
+      <div id="deformationCases" class="gallery-grid"></div>
+    </section>
+
+    <section class="panel submit-panel" aria-labelledby="entrega">
+      <div>
+        <h2 id="entrega">Preparar a entrega</h2>
+        <p>Revisa os campos pendentes. O ficheiro descargado contén as túas respostas, pero non inclúe unha corrección automática.</p>
+        <p id="validationMessage" class="validation" role="status"></p>
+      </div>
+      <div class="actions">
+        <button id="downloadBtn" class="primary">Descargar ficheiro de entrega</button>
+        <button id="clearBtn" class="secondary" type="button">Borrar respostas</button>
+      </div>
+    </section>
+
+    <details class="sources">
+      <summary>Fontes e licenzas das imaxes</summary>
+      <div class="source-columns">
+        <div>
+          <h3>Modelos tectónicos · Wikimedia Commons</h3>
+          <ol>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Continental-continental_constructive_plate_boundary.svg" target="_blank" rel="noopener">Rift continental</a> — domdomegg, CC BY 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Oceanic-continental_destructive_plate_boundary.svg" target="_blank" rel="noopener">Subdución océano–continente</a> — domdomegg, CC BY 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Continental-continental_convergence_en.svg" target="_blank" rel="noopener">Colisión continental</a> — USGS, Nefronus e Gretarsson, CC0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Oceanic-oceanic_convergence.svg" target="_blank" rel="noopener">Subdución océano–océano e arco insular</a> — Medium69 e Bibar, CC0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Continental-continental_conservative_plate_boundary_opposite_directions.svg" target="_blank" rel="noopener">Límite transformante</a> — domdomegg, CC BY 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Hotspot(geology)-1.svg" target="_blank" rel="noopener">Punto quente</a> — Los688, licenza libre indicada na ficha de Commons.</li>
+          </ol>
+          <p>Son modelos didácticos: simplifican o proceso e non están a escala.</p>
+        </div>
+        <div>
+          <h3>Imaxes reais · tectónica global</h3>
+          <ol>
+            <li><a href="https://science.nasa.gov/earth/earth-observatory/east-african-rift-valley-kenya-77566/" target="_blank" rel="noopener">África oriental</a> — ISS Crew Earth Observations / NASA. Recurso público de NASA.</li>
+            <li><a href="https://science.nasa.gov/earth/earth-observatory/altiplano-south-america-1152/" target="_blank" rel="noopener">Andes e Altiplano</a> — NASA GSFC / MODIS. Recurso público de NASA.</li>
+            <li><a href="https://science.nasa.gov/resource/the-himalayas/" target="_blank" rel="noopener">Himalaia</a> — USGS EROS / ASTER / NASA. Recurso público de organismos federais dos EUA.</li>
+            <li><a href="https://science.nasa.gov/earth/earth-observatory/activity-at-cleveland-volcano-aleutian-islands-6592/" target="_blank" rel="noopener">Illas Aleutianas</a> — ISS Crew Earth Observations / NASA. Recurso público de NASA.</li>
+            <li><a href="https://www.usgs.gov/media/images/san-andreas-fault" target="_blank" rel="noopener">Falla de San Andreas</a> — USGS. Dominio público segundo a fonte.</li>
+            <li><a href="https://science.nasa.gov/earth/earth-observatory/the-big-island-of-hawaii-2449/" target="_blank" rel="noopener">Illa de Hawai</a> — NOAA / Landsat 7 / NASA. Recurso público.</li>
+          </ol>
+        </div>
+        <div class="sources-wide">
+          <h3>Deformación</h3>
+          <ol>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Anticlines_and_Synclines.jpg" target="_blank" rel="noopener">Anticlines and Synclines</a> — USGS, CC BY 2.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:53-Plegamiento_geol%C3%B3gico_de_Campodola-Leixaz%C3%B3s,_Quiroga.jpg" target="_blank" rel="noopener">Campodola-Leixazós</a> — feelSacra, CC BY-SA 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Falla_normal.jpg" target="_blank" rel="noopener">Falla normal</a> — Arturo González, CC BY-SA 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Strike-slip_fault.jpg" target="_blank" rel="noopener">Strike-slip fault</a> — Jide, dominio público.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Diaclase_Ranchot.JPG" target="_blank" rel="noopener">Diaclase Ranchot</a> — Juraastro, CC BY-SA 3.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Jointed_diorite_outcrop,_Dalupirip,_Itogon,_Benguet_02.jpg" target="_blank" rel="noopener">Jointed diorite</a> — Paul Christian B. Yang-ed, CC BY-SA 4.0.</li>
+          </ol>
+        </div>
+      </div>
+      <p>As fotografías da galería só foron redimensionadas e comprimidas para facilitar a carga. As licenzas con obriga de atribución consérvanse nesta páxina.</p>
+    </details>
+  </main>
+
+  <dialog id="imageDialog">
+    <button id="closeDialog" aria-label="Pechar imaxe">Pechar</button>
+    <img id="dialogImage" alt="">
+    <p id="dialogCaption"></p>
+  </dialog>
+
+  <footer>
+    <p>Actividade de interpretación xeolóxica · As respostas gárdanse só neste navegador ata que se descargan.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
+
