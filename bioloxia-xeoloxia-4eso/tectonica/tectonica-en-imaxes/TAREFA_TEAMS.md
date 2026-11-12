@@ -16,7 +16,7 @@ https://franro77.github.io/DocentIA/bioloxia-xeoloxia-4eso/tectonica/tectonica-e
 
 ### Que tes que facer
 
-1. Abre a ligazón e escribe o teu **nome, apelidos e grupo**.
+1. Abre a ligazón e escribe o teu **ID do alumnado e o grupo**. Non escribas o teu nome nin os apelidos.
 2. Completa o apartado **Procesos tectónicos**. En cada caso compara o modelo xeolóxico coa imaxe real e selecciona:
    - o contexto tectónico;
    - o proceso principal que está a suceder.
@@ -36,7 +36,7 @@ https://franro77.github.io/DocentIA/bioloxia-xeoloxia-4eso/tectonica/tectonica-e
 ### Como entregar en Teams
 
 1. Preme o botón de descarga da actividade.
-2. Comproba que se descargou un ficheiro de texto co teu nome e coa indicación `entrega_1` ou `entrega_2`.
+2. Comproba que se descargou un ficheiro de texto co teu ID e coa indicación `entrega_1` ou `entrega_2`.
 3. Volve a esta tarefa de Teams e selecciona **Engadir traballo**.
 4. Anexa ese ficheiro de texto. **Non entregues capturas de pantalla.**
 5. Abre o ficheiro anexado para comprobar que é o correcto e preme **Entregar**.
