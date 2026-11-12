@@ -105,8 +105,8 @@ document.querySelector("#deformationCases").innerHTML = deformationData.map(item
   </article>`).join("");
 
 const allInputs = () => [...document.querySelectorAll("input, select, textarea")];
-const savedKey = "tectonica-imaxes-v1";
-const submissionKey = "tectonica-imaxes-entregas-v1";
+const savedKey = "tectonica-imaxes-v2";
+const submissionKey = "tectonica-imaxes-entregas-v2";
 
 function saveState() {
   const state = {};
@@ -127,7 +127,7 @@ function restoreState() {
 
 function requiredFields() {
   return [
-    document.querySelector("#studentName"),
+    document.querySelector("#studentId"),
     document.querySelector("#studentGroup"),
     ...document.querySelectorAll("[data-field='true']"),
     document.querySelector("#synthesisCase"),
@@ -165,7 +165,7 @@ function selectedLabel(id) {
   return el.value ? el.options[el.selectedIndex].text : "Sen responder";
 }
 function cleanFilename(value) {
-  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_|_$/g, "").toLowerCase() || "alumno";
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_|_$/g, "").toLowerCase() || "id";
 }
 
 function validate() {
@@ -187,7 +187,7 @@ function buildSubmission(attempt) {
     "TECTÓNICA EN IMAXES",
     "====================",
     `Entrega: ${attempt} de 2`,
-    `Nome e apelidos: ${textValue("#studentName")}`,
+    `ID do alumnado: ${textValue("#studentId")}`,
     `Grupo: ${textValue("#studentGroup")}`,
     `Data de xeración: ${new Date().toLocaleString("gl-ES")}`,
     "",
@@ -261,7 +261,7 @@ downloadBtn.addEventListener("click", () => {
   const blob = new Blob(["\uFEFF" + buildSubmission(attempt)], { type: "text/plain;charset=utf-8" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = `${cleanFilename(textValue("#studentName"))}_tectonica_imaxes_entrega_${attempt}.txt`;
+  link.download = `${cleanFilename(textValue("#studentId"))}_tectonica_imaxes_entrega_${attempt}.txt`;
   link.click();
   URL.revokeObjectURL(link.href);
   localStorage.setItem(submissionKey, String(attempt));
