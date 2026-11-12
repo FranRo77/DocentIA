@@ -22,10 +22,12 @@
       <div>
         <h2 id="instrucions">Instrucións</h2>
         <ul>
-          <li>Actividade individual. Tempo orientativo: 45–55 minutos.</li>
+          <li>Actividade individual. Tempo orientativo: 60–75 minutos; pode repartirse en dúas sesións.</li>
           <li>Observa cada imaxe antes de responder. A localización tamén forma parte da información dispoñible.</li>
           <li>Na galería final, xustifica a clasificación mediante un trazo visible: curvatura, desprazamento ou fractura sen desprazamento.</li>
-          <li>Ao rematar, descarga o ficheiro e entrégao na tarefa de Teams. Non envíes capturas de pantalla.</li>
+          <li>Podes facer dúas entregas: descarga a primeira, revisa o traballo e xera unha segunda versión.</li>
+          <li>As respostas correctas só aparecen neste navegador despois de descargar a segunda entrega.</li>
+          <li>Entrega en Teams o ficheiro solicitado polo profesor. Non envíes capturas de pantalla.</li>
         </ul>
       </div>
       <div class="student-fields">
@@ -84,14 +86,18 @@
     <section class="panel submit-panel" aria-labelledby="entrega">
       <div>
         <h2 id="entrega">Preparar a entrega</h2>
-        <p>Revisa os campos pendentes. O ficheiro descargado contén as túas respostas, pero non inclúe unha corrección automática.</p>
+        <p>Revisa os campos pendentes. Cada ficheiro indica se corresponde á entrega 1 ou á entrega 2.</p>
+        <p id="attemptStatus" class="attempt-status"></p>
         <p id="validationMessage" class="validation" role="status"></p>
       </div>
       <div class="actions">
-        <button id="downloadBtn" class="primary">Descargar ficheiro de entrega</button>
+        <button id="downloadBtn" class="primary">Descargar entrega 1</button>
+        <button id="revealBtn" class="answer-button" type="button" hidden>Ver respostas correctas</button>
         <button id="clearBtn" class="secondary" type="button">Borrar respostas</button>
       </div>
     </section>
+
+    <section id="answersPanel" class="panel answers-panel" hidden aria-live="polite"></section>
 
     <details class="sources">
       <summary>Fontes e licenzas das imaxes</summary>
@@ -123,11 +129,17 @@
           <h3>Deformación</h3>
           <ol>
             <li><a href="https://commons.wikimedia.org/wiki/File:Anticlines_and_Synclines.jpg" target="_blank" rel="noopener">Anticlines and Synclines</a> — USGS, CC BY 2.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Shuce_Cliff.jpg" target="_blank" rel="noopener">Shuce Cliff</a> — Dingruogu, CC BY-SA 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:AlmoraQuartz_Mica_SchistStructure-_Asymmetric_Recumbent_Fold.jpg" target="_blank" rel="noopener">Asymmetric Recumbent Fold</a> — Namrota Saha / Geological Survey of India, CC0.</li>
             <li><a href="https://commons.wikimedia.org/wiki/File:53-Plegamiento_geol%C3%B3gico_de_Campodola-Leixaz%C3%B3s,_Quiroga.jpg" target="_blank" rel="noopener">Campodola-Leixazós</a> — feelSacra, CC BY-SA 4.0.</li>
             <li><a href="https://commons.wikimedia.org/wiki/File:Falla_normal.jpg" target="_blank" rel="noopener">Falla normal</a> — Arturo González, CC BY-SA 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Reverse_fault_in_gyprock_(Castile_Formation,_Upper_Permian%3B_State_Line_outcrop,_southern_Eddy_County,_New_Mexico,_USA)_(15159863205).jpg" target="_blank" rel="noopener">Reverse fault in gyprock</a> — James St. John, CC BY 2.0.</li>
             <li><a href="https://commons.wikimedia.org/wiki/File:Strike-slip_fault.jpg" target="_blank" rel="noopener">Strike-slip fault</a> — Jide, dominio público.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Outcrop_showing_a_fault_offset.jpg" target="_blank" rel="noopener">Outcrop showing a fault offset</a> — Joshua Doubek, CC BY-SA 4.0.</li>
             <li><a href="https://commons.wikimedia.org/wiki/File:Diaclase_Ranchot.JPG" target="_blank" rel="noopener">Diaclase Ranchot</a> — Juraastro, CC BY-SA 3.0.</li>
             <li><a href="https://commons.wikimedia.org/wiki/File:Jointed_diorite_outcrop,_Dalupirip,_Itogon,_Benguet_02.jpg" target="_blank" rel="noopener">Jointed diorite</a> — Paul Christian B. Yang-ed, CC BY-SA 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Diaclasas_en_dolom%C3%ADas_Cuenca.jpg" target="_blank" rel="noopener">Diáclases en dolomías de Cuenca</a> — PePeEfe, CC BY-SA 4.0.</li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Jointed_and_weathered_granite_(GeoDIL_number_-_2208).jpg" target="_blank" rel="noopener">Jointed and weathered granite</a> — Dexter Perkins / GeoDIL, CC0.</li>
           </ol>
         </div>
       </div>
