@@ -65,6 +65,7 @@ h3 { margin: 0 0 .7rem; }
 .intro ul { margin-bottom: 0; padding-left: 1.2rem; }
 .intro li + li { margin-top: .4rem; }
 .student-fields { display: grid; gap: 1rem; align-content: start; }
+.field-help { margin: -.65rem 0 0; color: var(--muted); font-size: .9rem; }
 label { display: grid; gap: .4rem; font-weight: 700; }
 input, select, textarea {
   width: 100%;
